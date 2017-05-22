@@ -50,12 +50,12 @@
   :plugins [[lein-auto "0.1.2"]
             [lein-cljsbuild "1.1.4"]
             [lein-shell "0.5.0"]
+            [lein-scss "0.3.0"]
             [deraen/lein-less4j "0.5.0"]
             [com.roomkey/lein-v "6.1.0"]
             [org.clojars.eehah5ru/lein-filegen-ng "0.0.1"]
             [org.clojars.eehah5ru/cljsbuild-extras "0.0.2"]]
 
-  :hooks [leiningen.scss]
 
   :main ^:skip-aot work-sessions-website.core
 
@@ -76,6 +76,19 @@
 
 
   :target-path "target/%s"
+
+  ;;
+  ;;
+  ;;
+  :hooks [leiningen.scss]
+
+  :scss {:builds
+         {:dev {:source-dir "scss/"
+                :dest-dir   "public/css/"
+                :executable "sassc"
+                :args       ["-m" "-I" "scss/" "-t" "nested"]}}}
+
+
   :profiles
   {
    ;;
@@ -87,7 +100,8 @@
                    [figwheel-sidecar "0.5.10"]
                    [org.clojure/tools.nrepl "0.2.11"]]
 
-    :plugins [[lein-figwheel "0.5.9"]]
+    :plugins [[lein-figwheel "0.5.10"]]
+
     :source-paths ["env/dev"]
     ;;
     ;; generate index.html
@@ -103,7 +117,8 @@
     :cljsbuild {:builds [{:id "dev"
                           :source-paths ["src/cljs"]
                           :figwheel {:on-jsload "work-sessions-website.core/mount-root"}
-                          :compiler {:output-to "resources/public/js/compiled/app.js"
+                          :compiler {:main ^:skip-aot work-sessions-website.core
+                                     :output-to "resources/public/js/compiled/app.js"
                                      :output-dir "resources/public/js/compiled/out"
                                      :asset-path "/js/compiled/out"
                                      :source-map-timestamp true
@@ -111,8 +126,4 @@
                                      :closure-defines {goog.DEBUG true}
                                      :preloads [print.foo.preloads.devtools]}}]}
 
-    :scss {:builds {:dev {:source-dir "scss/"
-                          :dest-dir   "public/css/"
-                          :executable "sassc"
-                          :args       ["-m" "-I" "scss/" "-t" "nested"]}}}}}
-  )
+    }})
