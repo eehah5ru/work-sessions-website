@@ -1,6 +1,6 @@
 (use '[clojure.java.shell :only [sh]])
 
-(defproject work-sessions-website :lein-v
+(defproject work-sessions :lein-v
 
   :description "simultaneous work sessions website"
   :url "http://sws.eeefff.org"
@@ -31,6 +31,7 @@
                  [environ "1.0.3"]
                  [http-kit "2.2.0"]
                  [medley "0.8.3"]
+                 [kibu/pushy "0.3.6"]
                  [print-foo-cljs "2.0.3"]
                  [ring-logger-onelog "0.7.6"]
                  [clj-logging-config "1.9.12"]
@@ -40,6 +41,7 @@
                  [com.cemerick/url "0.1.1"]
                  [com.cognitect/transit-cljs "0.8.239"]
                  [com.cognitect/transit-clj "0.8.297"]
+                 [compojure "1.6.0-beta1"]
 
                  ;;
                  ;; clojurescript
@@ -57,7 +59,7 @@
             [org.clojars.eehah5ru/cljsbuild-extras "0.0.2"]]
 
 
-  :main ^:skip-aot work-sessions-website.core
+  :main ^:skip-aot work-sessions.core
 
   :source-paths ["src/clj"]
   :clean-targets ^{:protect false} ["resources/public/js/compiled"
@@ -85,8 +87,11 @@
   :scss {:builds
          {:dev {:source-dir "scss/"
                 :dest-dir   "public/css/"
-                :executable "sassc"
-                :args       ["-m" "-I" "scss/" "-t" "nested"]}}}
+                :executable "sass"
+                :args       ["--sourcemap=inline"
+                             ;; "-I" "scss/"
+                             "-I../bower_components/foundation-sites/scss/"
+                             "-t" "nested"]}}}
 
 
   :profiles
@@ -116,8 +121,8 @@
     ;;
     :cljsbuild {:builds [{:id "dev"
                           :source-paths ["src/cljs"]
-                          :figwheel {:on-jsload "work-sessions-website.core/mount-root"}
-                          :compiler {:main ^:skip-aot work-sessions-website.core
+                          :figwheel {:on-jsload "work-sessions.core/mount-root"}
+                          :compiler {:main ^:skip-aot work-sessions.core
                                      :output-to "resources/public/js/compiled/app.js"
                                      :output-dir "resources/public/js/compiled/out"
                                      :asset-path "/js/compiled/out"
