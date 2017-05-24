@@ -67,15 +67,11 @@
    :hovered? false
    :details (let [i (rand)]
               (cond
-                (< i 0.33)
+                (< i 0.5)
                 :description
 
-                (and (> i 0.33)
-                     (< i 0.66))
-                :schedule
-
                 :else
-                :documentation))})
+                :schedule))})
 
 ;;;
 ;;; default db

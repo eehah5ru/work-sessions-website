@@ -54,7 +54,7 @@
                     }
                    [:span
                     (:text header)]
-                   [:span.visible-hovered
+                   #_[:span.visible-hovered
                     (condp = (:details header)
                       :schedule
                       (gstring/unescapeEntities "&nbsp;->&nbsp;Schedule&nbsp;->&nbsp;")
@@ -63,15 +63,24 @@
                       (gstring/unescapeEntities "&nbsp;->&nbsp;About&nbsp;->&nbsp;")
 
                       :documentation
-                      (gstring/unescapeEntities "&nbsp;->&nbsp;Archive&nbsp;->&nbsp;"))]]]
+                      (gstring/unescapeEntities "&nbsp;->&nbsp;Archive&nbsp;->&nbsp;"))]
+                   ]]
                  (when (:details-visible? header)
                    (condp = (:details header)
                      ;;
                      ;; schedule
                      ;;
                      :schedule
-                     [:h4.details.schedule
-                      (gstring/unescapeEntities "The first session will be on 26&nbsp;May at 13.30&nbsp;Helsinki&nbsp;time")]
+                     [:div.details.schedule
+                      [:h4
+                       (gstring/unescapeEntities "Session&nbsp;#1: 26&nbsp;May, 13:30&thinsp;&mdash;&thinsp;14:30&nbsp;Helsinki&nbsp;time")
+                       [:br]
+                       [:a {:href "https://hangouts.google.com/hangouts/_/qrx7a5fwlrhedpmm73amlkrtiye"
+                            :target "blank"}
+                        "JOIN"]]
+                      [:br]
+                      [:h4
+                       (gstring/unescapeEntities "Session&nbsp;#2 2&nbsp;June, 13:30&thinsp;&mdash;&thinsp;14:30&nbsp;Helsinki&nbsp;time")]]
 
                      ;;
                      ;; documentation
