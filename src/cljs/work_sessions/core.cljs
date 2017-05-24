@@ -3,9 +3,9 @@
    [cljs-time.extend]
    [cljsjs.react-flexbox-grid]
    ;; [madvas.re-frame.google-analytics-fx]
-   ;; [work-sessions.handlers]
-   ;; [work-sessions.subs]
-   ;; [work-sessions.views :as views]
+   [work-sessions.handlers]
+   [work-sessions.subs]
+   [work-sessions.views :as views]
    ;; [childrensfutures-trade.pages :refer [routes]]
    ;; [childrensfutures-trade.utils :as u]
    [print.foo.preloads.devtools]
@@ -21,7 +21,7 @@
 ;;   (pushy/pushy #(dispatch [:ui.set-current-page %]) (partial bidi/match-route routes)))
 
 (defn mount-root []
-  #_(reagent/render [views/main-panel]
+  (reagent/render [views/index]
                   (.getElementById js/document "app")))
 
 (defn ^:export init []

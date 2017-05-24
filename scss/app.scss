@@ -22,3 +22,123 @@
 body {
   width: 100%;
 }
+
+
+
+.index {
+  @extend .row;
+  @extend .expanded;
+
+  .header-container {
+    @extend .small-12;
+    @extend .columns;
+    @extend .row;
+    @extend .expanded;
+
+    .header {
+      @extend .small-12;
+      @extend .columns;
+      @extend .row;
+      @extend .expanded;
+    }
+
+    h1 {
+      @extend .small-12;
+      @extend .columns;
+      cursor: pointer;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+
+      z-index: 999;
+
+      &:hover {
+        text-shadow: blue 2px 2px;
+        color: white;
+      }
+
+      span.visible-not-hovered {
+        display: inline;
+      }
+
+
+      span.visible-hovered {
+        display: none;
+      }
+
+      &.hovered {
+        span.visible-hovered {
+          display: inline;
+        }
+
+        span.visible-not-hovered {
+          display: none;
+        }
+      }
+
+      span {
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      }
+    }
+
+    .details {
+      @extend .small-12;
+      // @extend .small-offset-2;
+      @extend .medium-8;
+      @extend .medium-offset-2;
+      @extend .large-6;
+      @extend .large-offset-3;
+      @extend .end;
+      @extend .columns;
+
+      margin-top: .2rem;
+
+      color: blue;
+      font-family: monospace;
+      text-shadow: #FFEB3B 3px 3px;
+      font-weight: bold;
+    }
+
+    .description {
+
+    }
+
+    .schedule {
+      text-align: center;
+    }
+  }
+}
+
+// .marquee-container {
+//   // height: 25px;
+//   // width: 420px;
+
+//   overflow: hidden;
+//   position: relative;
+// }
+
+// .marquee {
+//   display: block;
+//   width: 200%;
+//   height: 30px;
+
+//   position: absolute;
+//   overflow: hidden;
+
+//   animation: marquee 5s linear infinite;
+// }
+
+// .marquee span {
+//   background-color: black;
+//   float: left;
+//   width: 100%;
+// }
+
+// @keyframes marquee {
+//   0% { left: 0; }
+//   100% { left: -100%; }
+// }
