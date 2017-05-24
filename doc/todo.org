@@ -1,0 +1,18 @@
+* infrastructure
+** DONE sws.eeefff.org -> namecheap
+   CLOSED: [2017-05-25 Thu 00:39]
+** DONE sws.eeefff.org - nginx
+   CLOSED: [2017-05-25 Thu 00:39]
+** DONE sws-eeefff-org service (copy from myfutures-trade)
+   CLOSED: [2017-05-25 Thu 00:39]
+* deploy
+** TODO profile
+** deploy scripts
+* exhibiton page
+** url to video
+** page
+* public site
+** text before session
+** join url
+** splash screen
+** remove documentation
