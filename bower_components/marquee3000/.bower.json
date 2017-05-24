@@ -1,0 +1,31 @@
+{
+  "name": "marquee3000",
+  "description": "The smoothest javascript marquees for the new millenium",
+  "main": "marquee3k.js",
+  "authors": [
+    "Ezekiel Aquino <ezekielaquino@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "marquee",
+    "marquees"
+  ],
+  "homepage": "https://github.com/ezekielaquino/Marquee3000",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "1046dd9385",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "1046dd93859ed7abf452606b9889e3c695c5026f"
+  },
+  "_source": "https://github.com/ezekielaquino/Marquee3000.git",
+  "_target": "*",
+  "_originalSource": "marquee3000",
+  "_direct": true
+}
