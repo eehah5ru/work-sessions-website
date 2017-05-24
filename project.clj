@@ -78,6 +78,7 @@
 
 
   :target-path "target/%s"
+  :uberjar-name "work-sessions.jar"
 
   ;;
   ;;
