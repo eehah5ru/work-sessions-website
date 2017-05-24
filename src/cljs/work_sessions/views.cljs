@@ -54,7 +54,7 @@
                     }
                    [:span
                     (:text header)]
-                   #_[:span.visible-hovered
+                   [:span.visible-hovered
                     (condp = (:details header)
                       :schedule
                       (gstring/unescapeEntities "&nbsp;->&nbsp;Schedule&nbsp;->&nbsp;")
