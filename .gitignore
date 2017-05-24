@@ -13,3 +13,4 @@ scss/.sass-cache
 log
 /resources/public/index.html
 /resources/public/js/compiled
+resources/public/css/*
