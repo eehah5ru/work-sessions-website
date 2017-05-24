@@ -4,6 +4,7 @@
             [compojure.route :refer [resources]]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.multipart-params :refer [wrap-multipart-params]]
+            [ring.middleware.resource :refer [wrap-resource]]
             [ring.middleware.gzip :refer [wrap-gzip]]
             [ring.util.request :refer [body-string]]
             ;; [ring.middleware.logger :refer [wrap-with-logger]]
@@ -118,15 +119,22 @@
   ;;      (what-is-my-ip request))
 
   (GET "/js/*" _
-    {:status 404})
-  (GET "/*" _
+       {:status 404})
+
+  (resources "/css/*")
+
+
+  #_(GET "/*" _
     {:status 200
      :headers {"Content-Type" "text/html; charset=utf-8"}
-     :body (io/input-stream (io/resource "public/index.html"))}))
+     :body (io/input-stream (io/resource "public/index.html"))})
+  )
 
 (def http-handler
   (-> routes
       (wrap-defaults (assoc-in site-defaults [:security :anti-forgery] false))
+      (wrap-resource "public/css")
+      (ring.middleware.content-type/wrap-content-type)
       logger.onelog/wrap-with-logger
       wrap-gzip))
 
