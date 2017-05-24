@@ -5,5 +5,5 @@ echo "deploying to sws.eeefff.org" &&
     lein with-profile production filegen-ng &&
     lein scss :dev once &&
     LEIN_SNAPSHOTS_IN_RELEASE=true lein with-profile production uberjar &&
-    scp ./target/work-sessions.jar work-sessions.do.myfutures.trade:/var/work-sessions &&
+    scp ./target/uberjar/work-sessions.jar work-sessions.do.myfutures.trade:/var/sws-eeefff-org &&
     ssh work-sessions.do.myfutures.trade "sudo service sws-eeefff-org restart; sleep 10; sudo service sws-eeefff-org status"
