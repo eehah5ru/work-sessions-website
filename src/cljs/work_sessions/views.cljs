@@ -2,7 +2,7 @@
   (:require
    [re-frame.core :refer [dispatch subscribe]]
    [reagent.core :as r]
-   [goog.string :as gstring]
+   [goog.string :as gstring :refer [unescapeEntities]]
    ))
 
 
@@ -31,6 +31,20 @@
 ;;          #(hash-map :data-reverse (if (> 0.5 (rand)) true false)
 ;;                     :data-speed (+ 30 (* 70 (rand)))
 ;;                     )))])
+
+(defn instructions []
+  [:h4.instructions
+   [:p
+    "Join a simultaneous work session from your computer using "
+    [:a {:href "https://www.google.com/chrome/"
+         :target "blank"}
+     "Google Chrome"]
+    " with "
+    [:a {:href "https://chrome.google.com/webstore/detail/google-hangouts/nckgahadagoaajjgafhacjanaoiihapd"
+         :target "blank"}
+     "Hangouts Chrome extension"]
+    " installed. To join a simultaneous work session from your
+    smartphone or tablet install the Hangouts app."]])
 
 (defn index []
   (let [headers (subscribe [:headers/all])]
@@ -72,15 +86,18 @@
                      ;;
                      :schedule
                      [:div.details.schedule
-                      [:h4
-                       (gstring/unescapeEntities "Session&nbsp;#1: 26&nbsp;May, 13:30&thinsp;&mdash;&thinsp;14:30&nbsp;Helsinki&nbsp;time")
-                       [:br]
+                      #_[:hr]
+                      [:h4.time-and-place
                        [:a {:href "https://hangouts.google.com/hangouts/_/qrx7a5fwlrhedpmm73amlkrtiye"
                             :target "blank"}
-                        "JOIN"]]
-                      [:br]
+                        (unescapeEntities "Session&nbsp;#1")]
+                       (gstring/unescapeEntities ": 26&nbsp;May, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
+                      #_[:hr]
                       [:h4
-                       (gstring/unescapeEntities "Session&nbsp;#2 2&nbsp;June, 13:30&thinsp;&mdash;&thinsp;14:30&nbsp;Helsinki&nbsp;time")]]
+                       (gstring/unescapeEntities "Session&nbsp;#2 2&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
+                      #_[:hr]
+                      (instructions)
+                      #_[:hr]]
 
                      ;;
                      ;; documentation

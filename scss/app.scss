@@ -97,6 +97,26 @@ body {
 
       margin-top: .2rem;
 
+      hr {
+        border: 0;
+        color: blue;
+        background-color: blue;
+        height: 5px;
+      }
+
+      .time-and-space {
+        margin-bottom: 1rem;
+      }
+
+      .instructions {
+        text-align: justify;
+        opacity: 0.3;
+      }
+
+      h4 {
+        margin-bottom: 1.2rem;
+      }
+
       h4,
       p {
         color: blue;
