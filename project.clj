@@ -86,7 +86,7 @@
 
   :scss {:builds
          {:dev {:source-dir "scss/"
-                :dest-dir   "public/css/"
+                :dest-dir   "resources/public/css/"
                 :executable "sass"
                 :args       ["--sourcemap=inline"
                              ;; "-I" "scss/"
