@@ -6,8 +6,10 @@
 ** DONE sws-eeefff-org service (copy from myfutures-trade)
    CLOSED: [2017-05-25 Thu 00:39]
 * deploy
-** TODO profile
-** deploy scripts
+** DONE profile
+   CLOSED: [2017-05-25 Thu 00:47]
+** TODO deploy scripts
+** SCSS :production lein config
 * exhibiton page
 ** url to video
 ** page
