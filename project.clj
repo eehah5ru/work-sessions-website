@@ -131,4 +131,35 @@
                                      :closure-defines {goog.DEBUG true}
                                      :preloads [print.foo.preloads.devtools]}}]}
 
-    }})
+    }
+
+      ;;
+   ;; production
+   ;;
+   :production
+   {:hooks [
+            leiningen.cljsbuild-extras
+            leiningen.cljsbuild]
+    ;;
+    ;; generate index.html
+    ;;
+    :filegen-ng [{:data
+                  {:template ~(slurp "resources/public/index_tpl.html")
+                   :version ~(fn [p] (:version p))}
+                  :template-fn #(.replaceAll (:template %2) "app.js" (str "app_" (:version %2) ".js"))
+                  :target "resources/public/index.html"}]
+
+    :omit-source true
+    :aot :all
+    :main work-sessions.core
+    :cljsbuild {:builds {:app {:id "production"
+                               :source-paths ["src/cljs"]
+                               :compiler {:main work-sessions.core
+                                          ;; :output-to ~(str "resources/public/js/compiled/app_" revision ".js")
+                                          ;; :output-to :version
+                                          ;; :output-to "aaa.js"
+                                          :output-to #=(eval (fn [p] (str "resources/public/js/compiled/app_" (:version p) ".js")))
+                                          :optimizations :advanced
+                                          :closure-defines {goog.DEBUG false}
+                                          :pretty-print true
+                                          :pseudo-names true}}}}}})
