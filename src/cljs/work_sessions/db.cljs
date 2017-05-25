@@ -29,7 +29,7 @@
 ;;; db
 ;;;
 (s/def ::site-name string?)
-
+(s/def ::is-proxy-viewer-docs-visible? boolean?)
 
 ;;;
 ;;; structs
@@ -38,6 +38,7 @@
                                   ::link
                                   ::link-text
                                   ::type]))
+
 (s/def ::header (s/keys :req-un [::text
                                  ::details-visible?
                                  ::speed
@@ -56,7 +57,8 @@
 ;;; DB SPEC
 ;;;
 (s/def ::db (s/keys :req-un [::headers
-                             ::site-name]))
+                             ::site-name
+                             ::is-proxy-viewer-docs-visible?]))
 
 ;;;
 ;;;
@@ -113,6 +115,7 @@
 ;;;
 (defn default-db []
   {:site-name "Simultaneous Work Sessions"
+   :is-proxy-viewer-docs-visible? false
    :headers (repeatedly 10 default-header)})
 
 

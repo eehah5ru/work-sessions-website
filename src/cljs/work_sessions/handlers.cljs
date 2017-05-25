@@ -1,6 +1,9 @@
 (ns work-sessions.handlers
   (:require
    [re-frame.core :refer [reg-event-db reg-event-fx path trim-v after debug reg-fx console dispatch]]
+   [ajax.core :as ajax]
+   [day8.re-frame.http-fx]
+
 
    [work-sessions.db :as db]
    [work-sessions.pages :as pages]
@@ -25,7 +28,8 @@
                                      (fn [h]
                                        (assoc h :text (:site-name db))))))
     :dispatch-later [{:ms 500 :dispatch [:ui.marquee/setup]}
-                     {:ms 1500 :dispatch [:ui.header/enable-angles]}]}))
+                     {:ms 1500 :dispatch [:ui.header/enable-angles]}
+                     {:ms 2000 :dispatch [:proxy-viewer.docs/setup-watchdog]}]}))
 
 ;;;
 ;;; marquee on headers
@@ -87,13 +91,53 @@
 (reg-event-db
  :ui.header/hover
 
- (fn [db [_ h-id]]
+ (interceptors)
+
+ (fn [db [h-id]]
    (console :log :ui.header/hover h-id (not (:hovered? (db/get-header db h-id))))
    (db/update-header db h-id #(update % :hovered? not))
    #_(db/update-header h-id #(assoc % :text (if-not (:hovered? %)
                                               (:site-name db)
                                               "aaa")))))
 
+;;;
+;;;
+;;; PROXY VIEWER
+;;;
+;;;
+(reg-event-db
+ :proxy-viewer.docs/set-visible
+
+ (interceptors)
+
+ (fn [db [is-visible]]
+   (assoc db :is-proxy-viewer-docs-visible? is-visible)))
+
+
+(reg-event-fx
+ :proxy-viewer.docs/setup-watchdog
+
+ (interceptors-fx :spec false)
+
+ (fn [{:keys [db]}]
+   {:dispatch-later [{:ms 5000
+                      :dispatch [:proxy-viewer.docs/setup-watchdog]}
+                     {:ms 100
+                      :dispatch [:proxy-viewer.docs/check-visibility]}]}))
+
+
+(reg-event-fx
+ :proxy-viewer.docs/check-visibility
+
+ (interceptors-fx :spec false)
+
+ (fn [{:keys [db]}]
+   {:http-xhrio {:method :get
+                 :uri "/proxy-viewer/is-docs-visible"
+                 :response-format (ajax/raw-response-format)
+                 :timout 6000
+                 :on-success [:proxy-viewer.docs/set-visible true]
+                 :on-failure [:proxy-viewer.docs/set-visible false]}}))
 ;;;
 ;;;
 ;;; PAGES
