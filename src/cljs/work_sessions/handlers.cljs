@@ -3,6 +3,7 @@
    [re-frame.core :refer [reg-event-db reg-event-fx path trim-v after debug reg-fx console dispatch]]
 
    [work-sessions.db :as db]
+   [work-sessions.pages :as pages]
 
    [work-sessions.handlers.interceptors :refer [interceptors
                                                 interceptors-fx]]))
@@ -61,18 +62,37 @@
  (fn [{:keys [db]} [header-id]]
    ;; (throw :aaa)
    (console :log :header-clicked header-id)
-   {:db (db/update-header db header-id #(update %1 :details-visible? not))}))
+   (let [h-type (-> db
+                    (db/get-header header-id)
+                    :details
+                    :type)
+         test-f #(= (-> %
+                        :details
+                        :type)
+                    h-type)
+         modifier-f #(update %1 :details-visible? not)]
+     {:db (-> db
+              #_(db/update-headers-when test-f
+                                      #(update % :details-visible? not))
+              #_(db/update-headers-when #(not (test-f %))
+                                        #(assoc % :details-visible? false))
+              (db/update-header header-id #(update % :details-visible? not))
+              #_(db/update-header header-id #(update % :hovered? not)))
+      ;; :dispatch [:ui.page/change (-> db
+      ;;                                (db/get-header header-id)
+      ;;                                :details
+      ;;                                :route)]
+      })))
 
 (reg-event-db
  :ui.header/hover
 
  (fn [db [_ h-id]]
-   ;; (console :log :hovered h-id)
-   (-> db
-       (db/update-header h-id #(update % :hovered? not))
-       #_(db/update-header h-id #(assoc % :text (if-not (:hovered? %)
-                                                (:site-name db)
-                                                "aaa"))))))
+   (console :log :ui.header/hover h-id (not (:hovered? (db/get-header db h-id))))
+   (db/update-header db h-id #(update % :hovered? not))
+   #_(db/update-header h-id #(assoc % :text (if-not (:hovered? %)
+                                              (:site-name db)
+                                              "aaa")))))
 
 ;;;
 ;;;

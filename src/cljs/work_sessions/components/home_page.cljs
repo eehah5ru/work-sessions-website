@@ -3,6 +3,8 @@
    [re-frame.core :refer [dispatch subscribe]]
    [reagent.core :as r]
    [goog.string :as gstring :refer [unescapeEntities]]
+
+   [work-sessions.utils :as u]
    ))
 
 (defn instructions []
@@ -37,23 +39,20 @@
                     :data-pausable true
                     :data-reverse (:reverse? header)
                     :data-speed (:speed header)
-                    :class (str "marquee3k" " " (when (:hovered? header) "hovered"))
+                    :class (str "marquee3k"
+                                " "
+                                (when (or (:hovered? header)
+                                          (:details-visible? header))
+                                  "hovered"))
                     }
                    [:span
                     (:text header)]
+
                    [:span.visible-hovered
-                    (condp = (:details header)
-                      :schedule
-                      (gstring/unescapeEntities "&nbsp;->&nbsp;Schedule&nbsp;->&nbsp;")
+                    (unescapeEntities (u/header-details-link-text header))]]]
 
-                      :description
-                      (gstring/unescapeEntities "&nbsp;->&nbsp;About&nbsp;->&nbsp;")
-
-                      :documentation
-                      (gstring/unescapeEntities "&nbsp;->&nbsp;Archive&nbsp;->&nbsp;"))]
-                   ]]
                  (when (:details-visible? header)
-                   (condp = (:details header)
+                   (condp = (-> header :details :type)
                      ;;
                      ;; schedule
                      ;;

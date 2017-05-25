@@ -53,7 +53,8 @@ body {
 
       z-index: 999;
 
-      &:hover {
+      &:hover,
+      &.hovered {
         text-shadow: blue 2px 2px;
         color: white;
       }
@@ -63,12 +64,14 @@ body {
       }
 
 
-      span.visible-hovered {
+      span.visible-hovered,
+      a.visible-hovered {
         display: none;
       }
 
       &.hovered {
-        span.visible-hovered {
+        span.visible-hovered,
+        a.visible-hovered {
           display: inline;
         }
 
@@ -111,6 +114,10 @@ body {
       .instructions {
         text-align: justify;
         opacity: 0.3;
+
+        &:hover {
+          opacity: 1;
+        }
       }
 
       h4 {

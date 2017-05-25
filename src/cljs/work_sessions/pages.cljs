@@ -24,7 +24,7 @@
 (def page-defs
   [
    ;; home
-   {:key :Home
+   {:key :home
     :route true
     :human-readable "Home"
     :page-view "work-sessions.components.home-page/home-page"
@@ -33,6 +33,15 @@
     :route "proxy-viewer"
     :human-readable "Proxy Viewer"
     :page-view "work-sessions.components.proxy-viewer-page/proxy-viewer-page"}
+   {:key :about
+    :route "about"
+    :human-readable "About"
+    :page-view "work-sessions.components.about-page/about-page"}
+   {:key :schedule
+    :route "schedule"
+    :human-readable "Schedule"
+    :page-view "work-sessions.components.schedule-page/schedule-page"}
+
    ])
 
 ;;;

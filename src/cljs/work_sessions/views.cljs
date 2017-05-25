@@ -10,6 +10,8 @@
    ;; pages
    ;;
    [work-sessions.components.home-page :refer [home-page]]
+   [work-sessions.components.schedule-page :refer [schedule-page]]
+   [work-sessions.components.about-page :refer [about-page]]
    [work-sessions.components.proxy-viewer-page :refer [proxy-viewer-page]]
    ))
 

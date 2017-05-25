@@ -82,6 +82,21 @@
   (letfn []
     (merge-with mergef a b)))
 
+;;;
+;;; HEADER UI UTILS
+;;;
+(defn header-details-link-text [h]
+  (str "&nbsp;->&nbsp;"
+       (condp = (-> h :details :type)
+         :schedule
+         "Schedule"
+
+         :description
+         "About"
+
+         :documentation
+         "Documentation")
+       "&nbsp;->&nbsp;"))
 
 ;;;
 ;;;
