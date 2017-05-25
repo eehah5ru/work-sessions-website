@@ -152,6 +152,12 @@ body {
   }
 }
 
+.proxy-viewer {
+  &.docs-visible {
+    background-color: red;
+  }
+}
+
 // .marquee-container {
 //   // height: 25px;
 //   // width: 420px;

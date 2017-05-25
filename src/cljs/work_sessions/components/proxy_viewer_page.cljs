@@ -10,4 +10,9 @@
    ))
 
 (defn proxy-viewer-page []
-  [headers-view])
+  (let [is-docs-visible? (subscribe [:proxy-viewer.docs/is-visible?])]
+    (fn []
+      [:div.proxy-viewer
+       {:class (when @is-docs-visible?
+                 "docs-visible")}
+       [headers-view]])))
