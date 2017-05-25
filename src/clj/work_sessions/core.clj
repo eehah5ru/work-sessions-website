@@ -16,6 +16,7 @@
             [cognitect.transit :as transit]
             [clojure.edn :as edn]
 
+            [work-sessions.db :as db]
             )
   (:gen-class))
 
@@ -48,8 +49,47 @@
 ;;; db handlers
 ;;;
 
-;;; storage adaptor
-;; (def db-storage (in-memory/create))
+(def db (db/create))
+
+
+;;;
+;;;
+;;; proxy-viewer/show-docs
+;;;
+;;;
+(defn proxy-viewer-show-docs [req]
+  (do
+    (reset! db (assoc @db :is-docs-visible true))
+    {:status 200
+    :headers {"Content-Type" "text/plain"}
+    :body "ok"}))
+
+;;;
+;;;
+;;; proxy-viewer/hide-docs
+;;;
+;;;
+(defn proxy-viewer-hide-docs [req]
+  (do
+    (reset! db (assoc @db :is-docs-visible false))
+    {:status 200
+    :headers {"Content-Type" "text/plain"}
+    :body "ok"}))
+
+;;;
+;;;
+;;; ask for proxy-viewer's show status
+;;;
+;;;
+(defn proxy-viewer-is-docs-visible [req]
+  (let [is-visible (:is-docs-visible @db)]
+    (merge {:headers {"Content-Type" "text/plain"}
+            :status 200
+            :body "visible"}
+
+           (when-not is-visible
+             {:status 404
+              :body "not-visible"}))))
 
 ;;;
 ;;; refresh db
@@ -120,6 +160,19 @@
 
   ;; (GET "/js/*" _
   ;;      {:status 404})
+
+  (GET "/proxy-viewer/show-docs"
+       req
+       (proxy-viewer-show-docs req))
+
+  (GET "/proxy-viewer/hide-docs"
+       req
+       (proxy-viewer-hide-docs req))
+
+  (GET "/proxy-viewer/is-docs-visible"
+       req
+       (proxy-viewer-is-docs-visible req))
+
 
   (resources "/css/*")
   (resources "/js/*")
