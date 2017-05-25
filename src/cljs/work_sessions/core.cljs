@@ -6,7 +6,7 @@
    [work-sessions.handlers]
    [work-sessions.subs]
    [work-sessions.views :as views]
-   ;; [childrensfutures-trade.pages :refer [routes]]
+   [work-sessions.pages :refer [routes]]
    ;; [childrensfutures-trade.utils :as u]
    [print.foo.preloads.devtools]
    [re-frame.core :as re-frame :refer [dispatch subscribe]]
@@ -17,11 +17,12 @@
 
 (enable-console-print!)
 
-;; (def history
-;;   (pushy/pushy #(dispatch [:ui.set-current-page %]) (partial bidi/match-route routes)))
+(def history
+  (pushy/pushy #(dispatch [:ui.page/set-current %]) (partial bidi/match-route routes)))
+
 
 (defn mount-root []
-  (reagent/render [views/index]
+  (reagent/render [views/main-panel]
                   (.getElementById js/document "app")))
 
 (defn ^:export init []
@@ -33,7 +34,7 @@
                      "load"
                      (fn []
                        (re-frame/dispatch-sync [:initialize])
-                       ;; (pushy/start! history)
+                       (pushy/start! history)
                        (mount-root)))
   #_(.addEventListener js/window "resize" #(dispatch [:ui.window/resize]))
   )

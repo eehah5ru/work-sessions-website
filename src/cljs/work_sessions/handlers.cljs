@@ -74,6 +74,33 @@
                                                 (:site-name db)
                                                 "aaa"))))))
 
+;;;
+;;;
+;;; PAGES
+;;;
+;;;
+
+(reg-event-fx
+ :ui.page/set-current
+ (interceptors-fx :spec true)
+
+ (fn [{:keys [db]} [match]]
+   {:db (assoc db
+               :current-page match)}))
+
+
+;;;
+;;; change location
+;;;
+(reg-event-fx
+ :ui.page/change
+ (interceptors-fx :spec false)
+
+ (fn [_ [& route-params]]
+   (aset js/window "location" (apply pages/path-for route-params))
+   {}))
+
+
 ;; (reg-event-db
 ;;  :ui.header/hover
 
