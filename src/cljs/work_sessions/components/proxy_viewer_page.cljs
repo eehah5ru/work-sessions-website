@@ -23,19 +23,19 @@
 
          [headers-view]
 
-         (when @is-docs-visible?
-           [:div.documentation-container
-            [:div.documentation
-             [:div.responsive-embed.widescreen
-              [:iframe
-               {:width 560
-                :height 315
-                ;; vnd.youtube://
-                ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
-                :src "https://www.youtube.com/embed/TuGG9Wts-zA?autoplay=1"
-                :frame-border 0
-                :auto-play 1
-                :allow-full-screen true}]]]])])})))
+         [:div.documentation-container
+          [:div.documentation
+           [:div.responsive-embed.widescreen
+            [:iframe
+             {:width 560
+              :height 315
+              ;; vnd.youtube://
+              ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
+              :src "https://www.youtube.com/embed/TuGG9Wts-zA?autoplay=1"
+              :frame-border 0
+              :auto-play 1
+              :loop 1
+              :allow-full-screen true}]]]]])})))
 
 
 ;; (defn proxy-viewer-page []
