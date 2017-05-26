@@ -34,6 +34,7 @@
               :src "https://www.youtube.com/embed/TuGG9Wts-zA?autoplay=1"
               :frame-border 0
               :auto-play 1
+              :controls 0
               :loop 1
               :allow-full-screen true}]]]]])})))
 
