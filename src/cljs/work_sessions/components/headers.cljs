@@ -13,7 +13,7 @@
     "EN"]
    [:p
     "Join a simultaneous work session from your computer by opening "
-    [:a {:href "https://hangouts.google.com/hangouts/_/qrx7a5fwlrhedpmm73amlkrtiye"
+    [:a {:href "http://sws.eeefff.org/session"
          :target "blank"}
      "THIS LINK"]
     " with "
@@ -28,7 +28,7 @@
 
    [:p
     "To join a simultaneous work session from your smartphone or tablet install the Hangouts app. For that open "
-    [:a {:href "https://hangouts.google.com/hangouts/_/qrx7a5fwlrhedpmm73amlkrtiye"
+    [:a {:href "http://sws.eeefff.org/session"
          :target "blank"}
      "THIS LINK"]
     " with "
@@ -63,8 +63,8 @@
          :target "blank"}
      "Google Chrome"]
     " "
-    [:a {:href "https://hangouts.google.com/hangouts/_/qrx7a5fwlrhedpmm73amlkrtiye"
-         :target "blank"}
+    [:a {:href "http://sws.eeefff.org/session"
+         :Target "blank"}
      "ССЫЛКУ"]
     ". Устанавливаешь расширение "
     [:a {:href "https://chrome.google.com/webstore/detail/google-hangouts/nckgahadagoaajjgafhacjanaoiihapd"
@@ -78,7 +78,7 @@
          :target "blank"}
      "Google Chrome"]
     " "
-    [:a {:href "https://hangouts.google.com/hangouts/_/qrx7a5fwlrhedpmm73amlkrtiye"
+    [:a {:href "http://sws.eeefff.org/session"
          :target "blank"}
      "ССЫЛКУ"]
     " и присоединяешься к видео звонку после установки приложения."]
@@ -138,7 +138,7 @@
                      [:div.details.schedule
                       #_[:hr]
                       [:h4.time-and-place
-                       [:a {:href "https://hangouts.google.com/hangouts/_/qrx7a5fwlrhedpmm73amlkrtiye"
+                       [:a {:href "https://hangouts.google.com/hangouts/_/ld3v6bbvfrenjdl26pkiqdamoee"
                             :target "blank"}
                         (unescapeEntities "Session&nbsp;#1")]
                        (gstring/unescapeEntities ": 26&nbsp;May, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
