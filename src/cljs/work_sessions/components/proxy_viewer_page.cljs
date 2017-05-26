@@ -23,7 +23,7 @@
 
          [headers-view]
 
-         (when @is-docs-visible?
+         (when true ;;@is-docs-visible?
            [:div.documentation-container
             [:div.documentation
              [:div.responsive-embed.widescreen
