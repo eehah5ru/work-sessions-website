@@ -10,16 +10,89 @@
 (defn instructions []
   [:h4.instructions
    [:p
-    "Join a simultaneous work session from your computer using "
+    "EN"]
+   [:p
+    "Join a simultaneous work session from your computer by opening "
+    [:a {:href "https://hangouts.google.com/hangouts/_/qrx7a5fwlrhedpmm73amlkrtiye"
+         :target "blank"}
+     "THIS LINK"]
+    " with "
     [:a {:href "https://www.google.com/chrome/"
          :target "blank"}
      "Google Chrome"]
-    " with "
+    ". Then add "
     [:a {:href "https://chrome.google.com/webstore/detail/google-hangouts/nckgahadagoaajjgafhacjanaoiihapd"
          :target "blank"}
      "Hangouts Chrome extension"]
-    " installed. To join a simultaneous work session from your
-    smartphone or tablet install the Hangouts app."]])
+    " and press Join the video chat"]
+
+   [:p
+    "To join a simultaneous work session from your smartphone or tablet install the Hangouts app. For that open "
+    [:a {:href "https://hangouts.google.com/hangouts/_/qrx7a5fwlrhedpmm73amlkrtiye"
+         :target "blank"}
+     "THIS LINK"]
+    " with "
+    [:a {:href "https://www.google.com/chrome/"
+         :target "blank"}
+     "Google Chrome"]
+    " and join the call after installing Hangouts."]
+
+   [:p
+    "You can be present with an image of you, you can also share your screen with your current work. The sound stays on."]
+
+   [:p
+    "In this very session we are focusing on the things that we wanted to do for a long time, but haven’t got time for that, the things that are oppressing us: answering emails that we were escaping to answer, writing to a friend that is waiting, composing a text that is hanging on you, something that screws you up."]
+
+   [:p
+    "This is a digital union of non-material workers, the virtual space of multi-user processing, so try not to distract each other, you can watch someone doing her cognitive work."]
+
+   [:p
+    "The session length is 1 hour, 13.30 – 14.30 Helsinki and Moscow time."]
+
+   [:p
+    "The next session will be in a week – on 2 June, time stays the same."]
+   ;;
+   ;; RUSSIAN
+   ;;
+   [:p
+    "РУС"]
+
+   [:p
+    "Если ты присоединяешься к сессии при помощи компьютера. Открываешь в "
+    [:a {:href "https://www.google.com/chrome/"
+         :target "blank"}
+     "Google Chrome"]
+    " "
+    [:a {:href "https://hangouts.google.com/hangouts/_/qrx7a5fwlrhedpmm73amlkrtiye"
+         :target "blank"}
+     "ССЫЛКУ"]
+    ". Устанавливаешь расширение "
+    [:a {:href "https://chrome.google.com/webstore/detail/google-hangouts/nckgahadagoaajjgafhacjanaoiihapd"
+         :target "blank"}
+     "Hangouts для Chrome"]
+    ". Нажимаешь Присоединиться к видео звонку."]
+
+   [:p
+    "Если присоединяешься при помощи телефона или планшета, устанавливаешь приложение Hangouts.  Открываешь в "
+    [:a {:href "https://www.google.com/chrome/"
+         :target "blank"}
+     "Google Chrome"]
+    " "
+    [:a {:href "https://hangouts.google.com/hangouts/_/qrx7a5fwlrhedpmm73amlkrtiye"
+         :target "blank"}
+     "ССЫЛКУ"]
+    " и присоединяешься к видео звонку после установки приложения."]
+   [:p
+    "Можешь присутствовать на сессии своим изображением, можешь расшаривать экран со своей работой. Звук оставляешь включенным."]
+   [:p
+    "В первой серии мы фокусируемся на тех вещах, которые уже давно хотели сделать, но нам не хватало времени, на вещах, которые нас гнетут – ответы на залежавшиеся email-ы; письмо подруге, которая ждет; текст, который давно весит на тебе; работа, которая не дает тебе покоя."]
+   [:p
+    "Представьте, что это союз нематериальных работников, виртуальное пространство совместной работы, поэтому старайтесь не отвлекать друг друга, можете наблюдать, как кто-то другой занимается своим когнитивным трудом."]
+   [:p
+    "Продолжительность сессии – 1 час, с 13.30 до 14.30 по Хельсинки и Москве."]
+   [:p
+    "Следующая сессия будет через неделю – 2 июня в это же время."]
+   ])
 
 (defn headers-view []
   (let [headers (subscribe [:headers/all])
@@ -70,7 +143,7 @@
                         (unescapeEntities "Session&nbsp;#1")]
                        (gstring/unescapeEntities ": 26&nbsp;May, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
                       #_[:hr]
-                      [:h4
+                      #_[:h4
                        (gstring/unescapeEntities "Session&nbsp;#2: 2&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
                       #_[:hr]
                       (instructions)
