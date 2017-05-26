@@ -138,11 +138,16 @@
    (merge
     {:db (assoc db :is-proxy-viewer-docs-visible? is-visible)}
 
-    (when is-visible
+    (when (and is-visible
+               (= :proxy-viewer
+                  (get-in db [:current-page :handler])))
       {:dispatch [:ui.header/hide-all-details]})
 
-    (when-not is-visible
-      {:dispatch [:ui.header/show-first-details-for-type :schedule]}))))
+    (when (and (not is-visible)
+               (= :proxy-viewer
+                  (get-in db [:current-page :handler])))
+      {:dispatch [:ui.header/show-first-details-for-type :schedule]})
+    )))
 
 
 (reg-event-fx
@@ -151,6 +156,7 @@
  (interceptors-fx :spec false)
 
  (fn [{:keys [db]}]
+   ;; (console :log db)
    {:dispatch-later [{:ms 5000
                       :dispatch [:proxy-viewer.docs/setup-watchdog]}
                      {:ms 100

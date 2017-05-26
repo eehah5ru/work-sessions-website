@@ -8,4 +8,12 @@
    ))
 
 (defn about-page []
-  [headers-view])
+  (r/create-class
+   {:component-did-mount #(dispatch [:ui.header/show-first-details-for-type :description])
+    :display-name "about-page"
+
+    :reagent-render
+    (fn []
+      [headers-view])}))
+;; (defn about-page []
+;;   [headers-view])
