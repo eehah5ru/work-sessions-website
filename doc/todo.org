@@ -18,3 +18,7 @@
 ** join url
 ** splash screen
 ** remove documentation
+* multipage
+** ui.page/set-current
+** db -> current-page
+** pages.cljs / routes
