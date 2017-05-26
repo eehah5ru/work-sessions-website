@@ -32,11 +32,13 @@
                 :height 315
                 ;; vnd.youtube://
                 ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
-                :src "https://www.youtube.com/embed/TuGG9Wts-zA?autoplay=1&loop=1&controls=0"
+                :src "https://www.youtube.com/embed/TuGG9Wts-zA?autoplay=1&loop=1&controls=0&start=1320&end=3900"
                 :frame-border 0
                 :auto-play 1
                 :loop 1
                 :controls 0
+                :start 1320
+                :end 3900
                 :allow-full-screen true}]]]])])})))
 
 
