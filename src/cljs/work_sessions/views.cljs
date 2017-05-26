@@ -46,7 +46,23 @@
 ;;; main panel
 ;;;
 (defn main-panel []
-  (let [current-page (subscribe [:ui.page/current])]
+  (let [current-page (subscribe [:ui.page/current])
+        splash-screen-state (subscribe [:ui.splash-screen/state])]
     (fn []
-      (when-let [page (pages (:handler @current-page))]
-        [page]))))
+      [:div.main-panel
+
+       ;; (when (not= @splash-screen-state
+       ;;          :disabled)
+       ;;   [:div.splash-screen
+       ;;    {:class (condp = @splash-screen-state
+       ;;              :enabling
+       ;;              "enabling"
+
+       ;;              :disabling
+       ;;              "disabling"
+
+       ;;              "")}])
+
+       (when-let [page (pages (:handler @current-page))]
+         [page])]
+      )))

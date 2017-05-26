@@ -24,6 +24,36 @@ body {
 }
 
 
+.splash-screen {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  &.enabling {
+    animation-name: splash-screen-animation;
+    animation-duration: 1s;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+  }
+
+  &.disabling {
+    animation-name: splash-screen-animation;
+    animation-duration: 1s;
+    // animation-direction: reverse;
+    // animation-fill-mode: forwards;
+  }
+
+}
+
+@keyframes splash-screen-animation {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
 
 .index {
   @extend .row;
@@ -34,6 +64,10 @@ body {
     @extend .columns;
     @extend .row;
     @extend .expanded;
+
+    &.hidden {
+      visibility: none;
+    }
 
     .header {
       @extend .small-12;
@@ -155,6 +189,23 @@ body {
 .proxy-viewer {
   &.docs-visible {
     background-color: red;
+  }
+
+  position: relative;
+
+  .documentation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .documentation {
+      @include absolute-center;
+
+      width: 80%;
+    }
+
   }
 }
 

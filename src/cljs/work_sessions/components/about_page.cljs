@@ -3,7 +3,9 @@
    [re-frame.core :refer [dispatch subscribe]]
    [reagent.core :as r]
    [goog.string :as gstring :refer [unescapeEntities]]
+
+   [work-sessions.components.headers :refer [headers-view]]
    ))
 
 (defn about-page []
-  [:h1 "aaa"])
+  [headers-view])

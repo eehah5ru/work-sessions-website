@@ -30,6 +30,10 @@
 ;;;
 (s/def ::site-name string?)
 (s/def ::is-proxy-viewer-docs-visible? boolean?)
+(s/def ::splash-screen-sate #{:disabled
+                              :enabled
+                              :enabling
+                              :disabling})
 
 ;;;
 ;;; structs
@@ -58,7 +62,8 @@
 ;;;
 (s/def ::db (s/keys :req-un [::headers
                              ::site-name
-                             ::is-proxy-viewer-docs-visible?]))
+                             ::is-proxy-viewer-docs-visible?
+                             ::splash-screen-state]))
 
 ;;;
 ;;;
@@ -116,6 +121,7 @@
 (defn default-db []
   {:site-name "Simultaneous Work Sessions"
    :is-proxy-viewer-docs-visible? false
+   :splash-screen-state :enabled
    :headers (repeatedly 10 default-header)})
 
 

@@ -7,6 +7,7 @@
 
    [work-sessions.db :as db]
    [work-sessions.pages :as pages]
+   [work-sessions.history :as history]
 
    [work-sessions.handlers.interceptors :refer [interceptors
                                                 interceptors-fx]]))
@@ -29,6 +30,7 @@
                                        (assoc h :text (:site-name db))))))
     :dispatch-later [{:ms 500 :dispatch [:ui.marquee/setup]}
                      {:ms 1500 :dispatch [:ui.header/enable-angles]}
+                     {:ms 1600 :dispatch [:splash-screen/disable]}
                      {:ms 2000 :dispatch [:proxy-viewer.docs/setup-watchdog]}]}))
 
 ;;;
@@ -77,15 +79,15 @@
          modifier-f #(update %1 :details-visible? not)]
      {:db (-> db
               #_(db/update-headers-when test-f
-                                      #(update % :details-visible? not))
+                                        #(update % :details-visible? not))
               #_(db/update-headers-when #(not (test-f %))
                                         #(assoc % :details-visible? false))
               (db/update-header header-id #(update % :details-visible? not))
               #_(db/update-header header-id #(update % :hovered? not)))
-      ;; :dispatch [:ui.page/change (-> db
-      ;;                                (db/get-header header-id)
-      ;;                                :details
-      ;;                                :route)]
+      :dispatch [:ui.page/change (-> db
+                                     (db/get-header header-id)
+                                     :details
+                                     :route)]
       })))
 
 (reg-event-db
@@ -100,18 +102,47 @@
                                               (:site-name db)
                                               "aaa")))))
 
+(reg-event-db
+ :ui.header/show-first-details-for-type
+
+ (interceptors)
+
+ (fn [db [details-type]]
+   (console :log "showing first header with type"  details-type)
+   (let [h-id (->> db
+                   :headers
+                   (map-indexed #(when (= details-type
+                                          (get-in %2 [:details :type])) %1))
+                   (remove nil?)
+                   (first)) ]
+     (db/update-header db h-id #(assoc % :details-visible? true)))))
+
+(reg-event-db
+ :ui.header/hide-all-details
+
+ (interceptors)
+
+ (fn [db]
+   (db/update-headers db #(assoc % :details-visible? false))))
 ;;;
 ;;;
 ;;; PROXY VIEWER
 ;;;
 ;;;
-(reg-event-db
+(reg-event-fx
  :proxy-viewer.docs/set-visible
 
- (interceptors)
+ (interceptors-fx :spec true)
 
- (fn [db [is-visible]]
-   (assoc db :is-proxy-viewer-docs-visible? is-visible)))
+ (fn [{:keys [db]} [is-visible]]
+   (merge
+    {:db (assoc db :is-proxy-viewer-docs-visible? is-visible)}
+
+    (when is-visible
+      {:dispatch [:ui.header/hide-all-details]})
+
+    (when-not is-visible
+      {:dispatch [:ui.header/show-first-details-for-type :schedule]}))))
 
 
 (reg-event-fx
@@ -138,6 +169,39 @@
                  :timout 6000
                  :on-success [:proxy-viewer.docs/set-visible true]
                  :on-failure [:proxy-viewer.docs/set-visible false]}}))
+
+
+;;;
+;;;
+;;; SPLASH SCREEN
+;;;
+;;;
+(reg-event-db
+ :splash-screen/enable
+
+ (interceptors)
+
+ (fn [db]
+   (assoc db :splash-screen-state :enabling)))
+
+(reg-event-fx
+ :splash-screen/disable
+
+ (interceptors-fx :spec true)
+
+ (fn [{:keys [db]}]
+   {:db (assoc db :splash-screen-state :disabling)
+    :dispatch-later [{:ms 1000
+                      :dispatch [:splash-screen/hide]}]}))
+
+(reg-event-db
+ :splash-screen/hide
+
+ (interceptors)
+
+ (fn [db]
+   (assoc db :splash-screen-state :disabled)))
+
 ;;;
 ;;;
 ;;; PAGES
@@ -161,8 +225,12 @@
  (interceptors-fx :spec false)
 
  (fn [_ [& route-params]]
-   (aset js/window "location" (apply pages/path-for route-params))
-   {}))
+   ;; (aset js/window "location" (apply pages/path-for route-params))
+   ;; {}
+   (history/set-current! (apply pages/path-for route-params))
+   {:dispatch-later [{:ms 1000
+                      :dispatch [:ui.marquee/setup]}]}
+   ))
 
 
 ;; (reg-event-db

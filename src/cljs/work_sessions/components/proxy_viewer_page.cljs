@@ -11,8 +11,52 @@
 
 (defn proxy-viewer-page []
   (let [is-docs-visible? (subscribe [:proxy-viewer.docs/is-visible?])]
-    (fn []
-      [:div.proxy-viewer
-       {:class (when @is-docs-visible?
-                 "docs-visible")}
-       [headers-view]])))
+    (r/create-class
+     {:component-did-mount #(dispatch [:ui.header/show-first-details-for-type :schedule])
+      :display-name "proxy-viewer-page"
+
+      :reagent-render
+      (fn []
+        [:div.proxy-viewer
+         ;; {:class (when @is-docs-visible?
+         ;;           "docs-visible")}
+
+         [headers-view]
+
+         (when @is-docs-visible?
+           [:div.documentation-container
+            [:div.documentation
+             [:div.responsive-embed.widescreen
+              [:iframe
+               {:width 560
+                :height 315
+                ;; vnd.youtube://
+                ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
+                :src "https://www.youtube.com/embed/TuGG9Wts-zA?autoplay=1"
+                :frame-border 0
+                :auto-play 1
+                :allow-full-screen true}]]]])])})))
+
+
+;; (defn proxy-viewer-page []
+;;   (let [is-docs-visible? (subscribe [:proxy-viewer.docs/is-visible?])]
+;;     (fn []
+;;       [:div.proxy-viewer
+;;        ;; {:class (when @is-docs-visible?
+;;        ;;           "docs-visible")}
+
+;;        [headers-view]
+
+;;        (when @is-docs-visible?
+;;          [:div.documentation
+;;           [:div.responsive-embed.widescreen
+;;            [:iframe
+;;             {:width 560
+;;              :height 315
+;;              ;; vnd.youtube://
+;;              ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
+;;              :src "https://www.youtube.com/embed/TuGG9Wts-zA?autoplay=1"
+;;              :frame-border 0
+;;              :auto-play 1
+;;              :allow-full-screen true}]]])
+;;        ])))

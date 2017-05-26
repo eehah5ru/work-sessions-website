@@ -6,19 +6,19 @@
    [work-sessions.handlers]
    [work-sessions.subs]
    [work-sessions.views :as views]
-   [work-sessions.pages :refer [routes]]
+
    ;; [childrensfutures-trade.utils :as u]
    [print.foo.preloads.devtools]
    [re-frame.core :as re-frame :refer [dispatch subscribe]]
    [reagent.core :as reagent]
    [pushy.core :as pushy]
    [bidi.bidi :as bidi]
-   [madvas.re-frame.google-analytics-fx :as google-analytics-fx]))
+   [madvas.re-frame.google-analytics-fx :as google-analytics-fx]
+
+   [work-sessions.history :as history]))
 
 (enable-console-print!)
 
-(def history
-  (pushy/pushy #(dispatch [:ui.page/set-current %]) (partial bidi/match-route routes)))
 
 
 (defn mount-root []
@@ -34,7 +34,7 @@
                      "load"
                      (fn []
                        (re-frame/dispatch-sync [:initialize])
-                       (pushy/start! history)
+                       (history/start!)
                        (mount-root)))
   #_(.addEventListener js/window "resize" #(dispatch [:ui.window/resize]))
   )

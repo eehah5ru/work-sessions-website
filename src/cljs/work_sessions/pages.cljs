@@ -9,7 +9,10 @@
    ;;
    ;; pages
    ;;
-   ;; [work-sessions.components.home-page :refer [home-page]]
+   [work-sessions.components.home-page :refer [home-page]]
+   [work-sessions.components.about-page :refer [about-page]]
+   [work-sessions.components.schedule-page :refer [schedule-page]]
+   [work-sessions.components.proxy-viewer-page :refer [proxy-viewer-page]]
    ;; [childrensfutures-trade.components.my-goals-page :refer [my-goals-page]]
    ;; [childrensfutures-trade.components.pulse-page :refer [pulse-page]]
    ;; [childrensfutures-trade.components.how-to-play-page :refer [how-to-play-page]]
@@ -28,20 +31,20 @@
    {:key :home
     :route true
     :human-readable "Home"
-    :page-view "work-sessions.components.home-page/home-page"
+    :page-view home-page
     }
    {:key :proxy-viewer
     :route "proxy-viewer"
     :human-readable "Proxy Viewer"
-    :page-view "work-sessions.components.proxy-viewer-page/proxy-viewer-page"}
+    :page-view proxy-viewer-page}
    {:key :about
     :route "about"
     :human-readable "About"
-    :page-view "work-sessions.components.about-page/about-page"}
+    :page-view about-page}
    {:key :schedule
     :route "schedule"
     :human-readable "Schedule"
-    :page-view "work-sessions.components.schedule-page/schedule-page"}
+    :page-view schedule-page}
 
    ])
 
@@ -63,7 +66,7 @@
 (def pages
   (reduce merge
           {}
-          (map #(hash-map (:key %) (fn [] (u/invoke (:page-view %)))) page-defs)))
+          (map #(hash-map (:key %) (:page-view %)) page-defs)))
 
 ;;;
 ;;;

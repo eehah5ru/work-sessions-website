@@ -22,12 +22,17 @@
     smartphone or tablet install the Hangouts app."]])
 
 (defn headers-view []
-  (let [headers (subscribe [:headers/all])]
+  (let [headers (subscribe [:headers/all])
+        splash-screen-state (subscribe [:ui.splash-screen/state])]
     (fn []
       [:div.index
        (map (fn [header h-id]
               (with-meta
                 [:div.header-container
+                 ;; {:class (if (= @splash-screen-state :disabled)
+                 ;;           ""
+                 ;;           "hidden")}
+
                  [:div.header
                   (when (:angled? header)
                     {:style {:transform (str "rotate(" (:angle header) "deg)")}})

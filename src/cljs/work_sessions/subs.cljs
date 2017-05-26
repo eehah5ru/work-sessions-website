@@ -32,6 +32,16 @@
 
 ;;;
 ;;;
+;;; SPLASH SCREEN
+;;;
+;;;
+(reg-sub
+ :ui.splash-screen/state
+
+ (fn [db]
+   (:splash-screen-state db)))
+;;;
+;;;
 ;;; pages
 ;;;
 ;;;
