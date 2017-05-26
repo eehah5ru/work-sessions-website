@@ -71,7 +71,7 @@
                        (gstring/unescapeEntities ": 26&nbsp;May, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
                       #_[:hr]
                       [:h4
-                       (gstring/unescapeEntities "Session&nbsp;#2 2&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
+                       (gstring/unescapeEntities "Session&nbsp;#2: 2&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
                       #_[:hr]
                       (instructions)
                       #_[:hr]]
