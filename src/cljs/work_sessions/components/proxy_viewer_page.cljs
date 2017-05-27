@@ -12,7 +12,7 @@
 (defn proxy-viewer-page []
   (let [is-docs-visible? (subscribe [:proxy-viewer.docs/is-visible?])]
     (r/create-class
-     {:component-did-mount #(dispatch [:ui.header/show-first-details-for-type :schedule])
+     {;;:component-did-mount #(dispatch [:ui.header/show-first-details-for-type :schedule])
       :display-name "proxy-viewer-page"
 
       :reagent-render
@@ -23,23 +23,23 @@
 
          [headers-view]
 
-         (when true ;;@is-docs-visible?
-           [:div.documentation-container
-            [:div.documentation
-             [:div.responsive-embed.widescreen
-              [:iframe
-               {:width 560
-                :height 315
-                ;; vnd.youtube://
-                ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
-                :src "https://www.youtube.com/embed/TuGG9Wts-zA?autoplay=1&loop=1&controls=0&start=1320&end=3900"
-                :frame-border 0
-                :auto-play 1
-                :loop 1
-                :controls 0
-                :start 1320
-                :end 3900
-                :allow-full-screen true}]]]])])})))
+         [:div.documentation-container
+          [:div.documentation
+           [:div.responsive-embed.widescreen
+            [:iframe
+             {:width 560
+              :height 315
+              ;; vnd.youtube://
+              ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
+              :src "https://www.youtube.com/embed/zYTfUtroTJI?autoplay=1&loop=1&controls=0&playlist=zYTfUtroTJI"
+              :frame-border 0
+              :auto-play 1
+              :loop 1
+              :controls 0
+              ;; :start 1320
+              ;; :end 1340
+              ;; :end 3900
+              :allow-full-screen true}]]]]])})))
 
 
 ;; (defn proxy-viewer-page []
