@@ -13,6 +13,7 @@
    [work-sessions.components.about-page :refer [about-page]]
    [work-sessions.components.schedule-page :refer [schedule-page]]
    [work-sessions.components.proxy-viewer-page :refer [proxy-viewer-page]]
+   [work-sessions.components.session-one-page :refer [session-one-page]]
    ;; [childrensfutures-trade.components.my-goals-page :refer [my-goals-page]]
    ;; [childrensfutures-trade.components.pulse-page :refer [pulse-page]]
    ;; [childrensfutures-trade.components.how-to-play-page :refer [how-to-play-page]]
@@ -45,6 +46,10 @@
     :route "schedule"
     :human-readable "Schedule"
     :page-view schedule-page}
+   {:key :session-one
+    :route "session-one"
+    :human-readable "Session #1"
+    :page-view session-one-page}
 
    ])
 
