@@ -1,5 +1,23 @@
 (ns work-sessions.db
-  (:require [cljs.spec :as s]))
+  (:require [cljs.spec :as s]
+            [work-sessions.pages :as pages]))
+
+;;;
+;;;
+;;; CONSTANTS
+;;;
+;;;
+;;;
+;;; details attrs
+;;;
+(def details-data
+  [{:type :description
+    :route-key :about}
+   {:type :schedule
+    :route-key :schedule}
+   {:type :session-one
+    :route-key :session-one}])
+
 
 ;;;
 ;;;
@@ -21,9 +39,9 @@
 (s/def ::link-text string?)
 (s/def ::route keyword?)
 
-(s/def ::type #{:description
-                :schedule
-                :documentation})
+(s/def ::type #(apply hash-set
+                     (map :type
+                          details-data)))
 
 ;;;
 ;;; db
@@ -72,36 +90,16 @@
 ;;;
 
 (defn random-details []
-  (let [details-type (let [i (rand)]
-                       (cond
-                         (< i 0.5)
-                         :description
-
-                         :else
-                         :schedule))
-        route (condp = details-type
-                :description
-                :about
-
-                :schedule
-                :schedule)
-
-        link (condp = details-type
-               :description
-               "/about"
-
-               :schedule
-               "/schedule")
-        link-text (condp = details-type
-                    :description
-                    "About"
-
-                    :schedule
-                    "Schedule")]
+  (let [details-d (rand-nth details-data)
+        details-type (:type details-d)
+        page-data #(->> pages/page-defs
+                        (filter (fn [x] (= (:route-key details-d) (:key x))))
+                        (first)
+                        %)]
     {:type details-type
-     :route route
-     :link link
-     :link-text link-text}))
+     :route (page-data :key)
+     :link (page-data :route)
+     :link-text (page-data :human-readable)}))
 ;;;
 ;;;
 ;;;

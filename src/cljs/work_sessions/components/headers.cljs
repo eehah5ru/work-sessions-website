@@ -14,26 +14,26 @@
    [:p
     "Join a simultaneous work session from your computer by opening "
     [:a {:href "http://sws.eeefff.org/session"
-         :target "blank"}
+         :target "_blank"}
      "THIS LINK"]
     " with "
     [:a {:href "https://www.google.com/chrome/"
-         :target "blank"}
+         :target "_blank"}
      "Google Chrome"]
     ". Then add "
     [:a {:href "https://chrome.google.com/webstore/detail/google-hangouts/nckgahadagoaajjgafhacjanaoiihapd"
-         :target "blank"}
+         :target "_blank"}
      "Hangouts Chrome extension"]
     " and press Join the video chat"]
 
    [:p
     "To join a simultaneous work session from your smartphone or tablet install the Hangouts app. For that open "
     [:a {:href "http://sws.eeefff.org/session"
-         :target "blank"}
+         :target "_blank"}
      "THIS LINK"]
     " with "
     [:a {:href "https://www.google.com/chrome/"
-         :target "blank"}
+         :target "_blank"}
      "Google Chrome"]
     " and join the call after installing Hangouts."]
 
@@ -60,26 +60,26 @@
    [:p
     "Если ты присоединяешься к сессии при помощи компьютера. Открываешь в "
     [:a {:href "https://www.google.com/chrome/"
-         :target "blank"}
+         :target "_blank"}
      "Google Chrome"]
     " "
     [:a {:href "http://sws.eeefff.org/session"
-         :Target "blank"}
+         :target "_blank"}
      "ССЫЛКУ"]
     ". Устанавливаешь расширение "
     [:a {:href "https://chrome.google.com/webstore/detail/google-hangouts/nckgahadagoaajjgafhacjanaoiihapd"
-         :target "blank"}
+         :target "_blank"}
      "Hangouts для Chrome"]
     ". Нажимаешь Присоединиться к видео звонку."]
 
    [:p
     "Если присоединяешься при помощи телефона или планшета, устанавливаешь приложение Hangouts.  Открываешь в "
     [:a {:href "https://www.google.com/chrome/"
-         :target "blank"}
+         :target "_blank"}
      "Google Chrome"]
     " "
     [:a {:href "http://sws.eeefff.org/session"
-         :target "blank"}
+         :target "_blank"}
      "ССЫЛКУ"]
     " и присоединяешься к видео звонку после установки приложения."]
    [:p
@@ -94,6 +94,98 @@
     "Следующая сессия будет через неделю – 2 июня в это же время."]
    ])
 
+;;;
+;;;
+;;; SCHEDULE VIEW
+;;;
+;;;
+(defn schedule-view [header]
+  [:div.details.schedule
+   #_[:hr]
+   [:h4.time-and-place
+    [:a {:href "http://sws.eeefff.org/session"
+         :target "_blank"}
+     (unescapeEntities "Session&nbsp;#1")]
+    (gstring/unescapeEntities ": 26&nbsp;May, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
+   #_[:hr]
+   #_[:h4
+      (gstring/unescapeEntities "Session&nbsp;#2: 2&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
+   #_[:hr]
+   [instructions]
+   #_[:hr]])
+
+;;;
+;;;
+;;; DOCUMENTATION VIEW
+;;;
+;;;
+(defn documentation-view [header]
+  [:div.details.documentatation
+   [:div.responsive-embed.widescreen
+    [:iframe
+     {:width 560
+      :height 315
+      ;; vnd.youtube://
+      ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
+      :src "https://www.youtube.com/embed/Qar_jUm7yhQ?autoplay=1"
+      :frame-border 0
+      :auto-play 1
+      :allow-full-screen true}]]])
+
+;;;
+;;;
+;;; DOCUMENTATION VIEW
+;;;
+;;;
+(defn session-one-view [header]
+  [:div.details.documentatation
+   [:div.responsive-embed.widescreen
+    [:iframe
+             {:width 560
+              :height 315
+              ;; vnd.youtube://
+              ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
+              :src "https://www.youtube.com/embed/zYTfUtroTJI?autoplay=1&loop=1&controls=1"
+              :frame-border 0
+              :auto-play 1
+              :loop 1
+              :controls 1
+              ;; :start 1320
+              ;; :end 1340
+              ;; :end 3900
+              :allow-full-screen true}]]])
+
+;;;
+;;;
+;;; DESCRIPTION VIEW
+;;;
+;;;
+(defn description-view [header]
+  [:h4.details.description
+   [:p "In a series of simultaneous work sessions, we invite you to
+                                            join a work activity for
+                                            an hour space of time."]
+
+   [:p "The synchronized sessions are designed to
+                      embody participants into one working mode. Being
+                      united by one of online-communication tools, we
+                      will simply work and listen to each other's
+                      work. Being silently present in the imaginary
+                      space."]
+   [:p "Rationalized time management of production
+                processes is the contrast to joint silent sessions,
+                when we unite not to produce something together, but
+                rather to help each other to overcome the accelerating
+                communication and production processes reinforced by
+                online tools. Using the same tools not for their
+                primarily functions, we are constructing together the
+                union of non-material workers."]])
+
+;;;
+;;;
+;;; HEADERS VIEW
+;;;
+;;;
 (defn headers-view []
   (let [headers (subscribe [:headers/all])
         splash-screen-state (subscribe [:ui.splash-screen/state])]
@@ -135,59 +227,30 @@
                      ;; schedule
                      ;;
                      :schedule
-                     [:div.details.schedule
-                      #_[:hr]
-                      [:h4.time-and-place
-                       [:a {:href "http://sws.eeefff.org/session"
-                            :target "blank"}
-                        (unescapeEntities "Session&nbsp;#1")]
-                       (gstring/unescapeEntities ": 26&nbsp;May, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
-                      #_[:hr]
-                      #_[:h4
-                       (gstring/unescapeEntities "Session&nbsp;#2: 2&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
-                      #_[:hr]
-                      (instructions)
-                      #_[:hr]]
+                     [schedule-view header]
 
                      ;;
                      ;; documentation
                      ;;
                      :documentation
-                     [:div.details.documentatation
-                      [:div.responsive-embed.widescreen
-                       [:iframe
-                        {:width 560
-                         :height 315
-                         ;; vnd.youtube://
-                         ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
-                         :src "https://www.youtube.com/embed/Qar_jUm7yhQ?autoplay=1"
-                         :frame-border 0
-                         :auto-play 1
-                         :allow-full-screen true}]]]
+                     [documentation-view header]
+
+                     ;;
+                     ;; session one
+                     ;;
+                     :session-one
+                     [session-one-view header]
 
                      ;;
                      ;; description
                      ;;
                      :description
-                     [:h4.details.description
-                      [:p "In a series of simultaneous work sessions,
-                                            we invite you to join a
-                                            work activity for an hour
-                                            space of time."]
+                     [description-view header]
 
-                      [:p "The synchronized sessions are designed to
-                      embody participants into one working mode. Being
-                      united by one of online-communication tools, we
-                      will simply work and listen to each other's
-                      work. Being silently present in the imaginary
-                      space."]
-                      [:p "Rationalized time management of production
-                processes is the contrast to joint silent sessions,
-                when we unite not to produce something together, but
-                rather to help each other to overcome the accelerating
-                communication and production processes reinforced by
-                online tools. Using the same tools not for their
-                primarily functions, we are constructing together the
-                union of non-material workers."]]))]  {:key h-id}))
+                     ;;
+                     ;; missing
+                     ;;
+                     [schedule-view header]))]
+                {:key h-id}))
             @headers
             (range (count @headers)))])))

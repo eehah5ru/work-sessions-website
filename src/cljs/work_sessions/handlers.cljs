@@ -233,9 +233,10 @@
  (fn [_ [& route-params]]
    ;; (aset js/window "location" (apply pages/path-for route-params))
    ;; {}
-   (history/set-current! (apply pages/path-for route-params))
-   {:dispatch-later [{:ms 1000
-                      :dispatch [:ui.marquee/setup]}]}
+   ;; (history/set-current! (apply pages/path-for route-params))
+   #_{:dispatch-later [{:ms 1000
+                        :dispatch [:ui.marquee/setup]}]}
+   {}
    ))
 
 

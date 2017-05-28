@@ -87,15 +87,7 @@
 ;;;
 (defn header-details-link-text [h]
   (str "&nbsp;->&nbsp;"
-       (condp = (-> h :details :type)
-         :schedule
-         "Schedule"
-
-         :description
-         "About"
-
-         :documentation
-         "Documentation")
+       (-> h :details :link-text)
        "&nbsp;->&nbsp;"))
 
 ;;;
