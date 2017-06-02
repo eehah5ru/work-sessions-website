@@ -19,6 +19,10 @@
 @include foundation-orbit;
 @include foundation-responsive-embed;
 
+@mixin monotype-font {
+  font-family: "Courier New", Courier, monospace;
+}
+
 body {
   width: 100%;
 }
@@ -160,8 +164,9 @@ body {
 
       h4,
       p {
+        @include monotype-font;
+
         color: blue;
-        font-family: monospace;
         text-shadow: #FFEB3B 3px 3px;
         font-weight: bold;
       }
@@ -218,10 +223,10 @@ body {
 
   h4 {
     @include absolute-center;
+    @include monotype-font;
     text-align: center;
 
     color: blue;
-    font-family: monospace;
     text-shadow: #FFEB3B 3px 3px;
     font-weight: bold;
 
