@@ -13,4 +13,4 @@
     "It's too early! Please follow this "
     [:a {:href "/session-two-room"}
      "link"]
-    " at 13:30 Helsinki time"]])
+    " on 2 June 13:30 Helsinki time"]])
