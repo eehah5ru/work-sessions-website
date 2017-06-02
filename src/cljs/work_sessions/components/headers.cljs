@@ -12,6 +12,24 @@
    [:p
     "EN"]
    [:p
+    "You can join by the "
+    [:a {:href "/session-two-room"
+         :target "_blank"}
+     "link"]
+    "."]
+   [:p
+    (unescapeEntities "A number of participants in one session&nbsp;&mdash;&nbsp;up to 10 people.")]
+   [:p
+    "This is a digital union of non-material workers, the virtual space of multi-user processing, so try not to distract each other, you can watch someone doing her cognitive work."]
+   [:p
+    "You can be present with an image of you, you can also share your screen with your current work (On the left side of the screen, click Share screen – a button with a green computer). The sound stays on."]
+   [:p
+    "In this very session we are focusing on improving the infrastructure for work: clean the desktop, install a photoshop that has not been installed for a long time, add a plug-in that has always been lacking, clean e-mail to avoid paying for it, unsubscribe from mailouts that are so many that nothing can be found in the Inbox."]
+   [:p
+    (unescapeEntities "The session length is 1 hour, 13.30&nbsp;&mdash;&nbsp;14.30 Helsinki and Moscow time.")]
+   [:p
+    (unescapeEntities "The next session will be in a week&nbsp;&mdash;&nbsp;on 9 June, time stays the same.")]
+   [:p
     "Join a simultaneous work session from your computer by opening "
     [:a {:href "http://sws.eeefff.org/session-two-room"
          :target "_blank"}
@@ -36,21 +54,6 @@
          :target "_blank"}
      "Google Chrome"]
     " and join the call after installing Hangouts."]
-
-   [:p
-    "You can be present with an image of you, you can also share your screen with your current work. The sound stays on."]
-
-   [:p
-    "In this very session we are focusing on the things that we wanted to do for a long time, but haven’t got time for that, the things that are oppressing us: answering emails that we were escaping to answer, writing to a friend that is waiting, composing a text that is hanging on you, something that screws you up."]
-
-   [:p
-    "This is a digital union of non-material workers, the virtual space of multi-user processing, so try not to distract each other, you can watch someone doing her cognitive work."]
-
-   [:p
-    "The session length is 1 hour, 13.30 – 14.30 Helsinki and Moscow time."]
-
-   [:p
-    "The next session will be in a week – on 9 June, time stays the same."]
    ;;
    ;; RUSSIAN
    ;;
