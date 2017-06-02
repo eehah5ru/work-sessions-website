@@ -10,7 +10,7 @@
 
 (defn home-page []
   (r/create-class
-   {:component-did-mount #(dispatch [:ui.header/show-first-details-for-type :schedule])
+   {;:component-did-mount #(dispatch [:ui.header/show-first-details-for-type :schedule])
     :display-name "home-page"
 
     :reagent-render

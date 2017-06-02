@@ -216,9 +216,25 @@ body {
   height: 100%;
   // position: relative;
 
-  h1 {
+  h4 {
     @include absolute-center;
     text-align: center;
+
+    color: blue;
+    font-family: monospace;
+    text-shadow: #FFEB3B 3px 3px;
+    font-weight: bold;
+
+  }
+
+  a {
+    color: blue;
+    text-decoration: underline;
+
+    &:hover {
+      color: red;
+    }
+
   }
 }
 // .marquee-container {

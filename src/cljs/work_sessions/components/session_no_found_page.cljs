@@ -9,7 +9,7 @@
 
 (defn session-not-found-page []
   [:div.session-not-found
-   [:h1
+   [:h4
     "It's too early! Please follow this "
     [:a {:href "/session-two-room"}
      "link"]
