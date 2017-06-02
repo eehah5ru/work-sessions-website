@@ -13,7 +13,7 @@
     "EN"]
    [:p
     "Join a simultaneous work session from your computer by opening "
-    [:a {:href "http://sws.eeefff.org/session"
+    [:a {:href "http://sws.eeefff.org/session-two-room"
          :target "_blank"}
      "THIS LINK"]
     " with "
@@ -28,7 +28,7 @@
 
    [:p
     "To join a simultaneous work session from your smartphone or tablet install the Hangouts app. For that open "
-    [:a {:href "http://sws.eeefff.org/session"
+    [:a {:href "http://sws.eeefff.org/session-two-room"
          :target "_blank"}
      "THIS LINK"]
     " with "
@@ -50,7 +50,7 @@
     "The session length is 1 hour, 13.30 – 14.30 Helsinki and Moscow time."]
 
    [:p
-    "The next session will be in a week – on 2 June, time stays the same."]
+    "The next session will be in a week – on 9 June, time stays the same."]
    ;;
    ;; RUSSIAN
    ;;
@@ -63,7 +63,7 @@
          :target "_blank"}
      "Google Chrome"]
     " "
-    [:a {:href "http://sws.eeefff.org/session"
+    [:a {:href "http://sws.eeefff.org/session-two-room"
          :target "_blank"}
      "ССЫЛКУ"]
     ". Устанавливаешь расширение "
@@ -78,7 +78,7 @@
          :target "_blank"}
      "Google Chrome"]
     " "
-    [:a {:href "http://sws.eeefff.org/session"
+    [:a {:href "http://sws.eeefff.org/session-two-room"
          :target "_blank"}
      "ССЫЛКУ"]
     " и присоединяешься к видео звонку после установки приложения."]
@@ -91,7 +91,7 @@
    [:p
     "Продолжительность сессии – 1 час, с 13.30 до 14.30 по Хельсинки и Москве."]
    [:p
-    "Следующая сессия будет через неделю – 2 июня в это же время."]
+    "Следующая сессия будет через неделю – 9 июня в это же время."]
    ])
 
 ;;;
@@ -103,10 +103,10 @@
   [:div.details.schedule
    #_[:hr]
    [:h4.time-and-place
-    [:a {:href "http://sws.eeefff.org/session"
+    [:a {:href "http://sws.eeefff.org/session-two-room"
          :target "_blank"}
-     (unescapeEntities "Session&nbsp;#1")]
-    (gstring/unescapeEntities ": 26&nbsp;May, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
+     (unescapeEntities "Session&nbsp;#2")]
+    (gstring/unescapeEntities ": 2&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;and&nbsp;Moscow&nbsp;time")]
    #_[:hr]
    #_[:h4
       (gstring/unescapeEntities "Session&nbsp;#2: 2&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]

@@ -9,4 +9,13 @@
    ))
 
 (defn home-page []
-  [headers-view])
+  (r/create-class
+   {:component-did-mount #(dispatch [:ui.header/show-first-details-for-type :schedule])
+    :display-name "home-page"
+
+    :reagent-render
+    (fn []
+      [headers-view])}))
+
+;; (defn home-page []
+;;   [headers-view])

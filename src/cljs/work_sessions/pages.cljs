@@ -14,6 +14,8 @@
    [work-sessions.components.schedule-page :refer [schedule-page]]
    [work-sessions.components.proxy-viewer-page :refer [proxy-viewer-page]]
    [work-sessions.components.session-one-page :refer [session-one-page]]
+
+   [work-sessions.components.session-not-found-page :refer [session-not-found-page]]
    ;; [childrensfutures-trade.components.my-goals-page :refer [my-goals-page]]
    ;; [childrensfutures-trade.components.pulse-page :refer [pulse-page]]
    ;; [childrensfutures-trade.components.how-to-play-page :refer [how-to-play-page]]
@@ -50,6 +52,10 @@
     :route "session-one"
     :human-readable "Session #1"
     :page-view session-one-page}
+   {:key :session-not-found
+    :route "session-not-found"
+    :human-readable "Session not found"
+    :page-view session-not-found-page}
 
    ])
 
