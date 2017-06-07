@@ -11,6 +11,7 @@
   [:div.session-not-found
    [:h4
     "It's too early! Please follow this "
-    [:a {:href "http://sws.eeefff.org/session-two-room"}
+    [:a {:href "http://sws.eeefff.org/session-two-room"
+         :target "_blank"}
      "link"]
     " on 2 June 13:30 Helsinki time"]])
