@@ -7,13 +7,13 @@
    [work-sessions.utils :as u]
    ))
 
-(defn instructions []
+(defn instructions [session-room-url]
   [:h4.instructions
    [:p
     "EN"]
    [:p
     "You can join by the "
-    [:a {:href "/session-two-room"
+    [:a {:href (str "http://sws.eeefff.org" session-room-url)
          :target "_blank"}
      "link"]
     "."]
@@ -31,7 +31,7 @@
     (unescapeEntities "The next session will be in a week&nbsp;&mdash;&nbsp;on 9 June, time stays the same.")]
    [:p
     "Join a simultaneous work session from your computer by opening "
-    [:a {:href "http://sws.eeefff.org/session-two-room"
+    [:a {:href (str "http://sws.eeefff.org" session-room-url)
          :target "_blank"}
      "THIS LINK"]
     " with "
@@ -46,7 +46,7 @@
 
    [:p
     "To join a simultaneous work session from your smartphone or tablet install the Hangouts app. For that open "
-    [:a {:href "http://sws.eeefff.org/session-two-room"
+    [:a {:href (str "http://sws.eeefff.org" session-room-url)
          :target "_blank"}
      "THIS LINK"]
     " with "
@@ -61,7 +61,7 @@
     "РУС"]
    [:p
     "Присоединиться можно по "
-    [:a {:href "http://sws.eeefff.org/session-two-room"
+    [:a {:href (str "http://sws.eeefff.org" session-room-url)
          :target "_blank"}
      "ссылке"]
     "."]
@@ -85,7 +85,7 @@
          :target "_blank"}
      "Google Chrome"]
     " "
-    [:a {:href "http://sws.eeefff.org/session-two-room"
+    [:a {:href (str "http://sws.eeefff.org" session-room-url)
          :target "_blank"}
      "ССЫЛКУ"]
     ". Устанавливаешь расширение "
@@ -100,7 +100,7 @@
          :target "_blank"}
      "Google Chrome"]
     " "
-    [:a {:href "http://sws.eeefff.org/session-two-room"
+    [:a {:href (str "http://sws.eeefff.org" session-room-url)
          :target "_blank"}
      "ССЫЛКУ"]
     " и присоединяешься к видео звонку после установки приложения."]
@@ -115,41 +115,23 @@
   [:div.details.schedule
    #_[:hr]
    [:h4.time-and-place
-    [:a {:href "http://sws.eeefff.org/session-two-room"
+    [:a {:href "http://sws.eeefff.org/session-three-room"
          :target "_blank"}
-     (unescapeEntities "Session&nbsp;#2")]
-    (gstring/unescapeEntities ": 2&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;and&nbsp;Moscow&nbsp;time")]
+     (unescapeEntities "Session&nbsp;#3")]
+    (gstring/unescapeEntities ": 9&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;and&nbsp;Moscow&nbsp;time")]
    #_[:hr]
    #_[:h4
       (gstring/unescapeEntities "Session&nbsp;#2: 2&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
    #_[:hr]
-   [instructions]
+   [instructions "/session-three-room"]
    #_[:hr]])
 
 ;;;
 ;;;
-;;; DOCUMENTATION VIEW
+;;; GENERIC DOCUMENTATION VIEW
 ;;;
 ;;;
 (defn documentation-view [header]
-  [:div.details.documentatation
-   [:div.responsive-embed.widescreen
-    [:iframe
-     {:width 560
-      :height 315
-      ;; vnd.youtube://
-      ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
-      :src "https://www.youtube.com/embed/Qar_jUm7yhQ?autoplay=1"
-      :frame-border 0
-      :auto-play 1
-      :allow-full-screen true}]]])
-
-;;;
-;;;
-;;; DOCUMENTATION VIEW
-;;;
-;;;
-(defn session-one-view [header]
   [:div.details.documentatation
    [:div.responsive-embed.widescreen
     [:iframe
@@ -157,7 +139,7 @@
               :height 315
               ;; vnd.youtube://
               ;; :src "vnd.youtube://www.youtube.com/watch?v=Qar_jUm7yhQ?autoplay=1"
-              :src "https://www.youtube.com/embed/zYTfUtroTJI?autoplay=1&loop=1&controls=1"
+              :src (str "https://www.youtube.com/embed/" (-> header :details :youtube-id) "?autoplay=1&loop=1&controls=1")
               :frame-border 0
               :auto-play 1
               :loop 1
@@ -166,6 +148,14 @@
               ;; :end 1340
               ;; :end 3900
               :allow-full-screen true}]]])
+
+;;;
+;;;
+;;; SESSION 1 DOCUMENTATION VIEW
+;;;
+;;;
+;; (defn session-one-view [header]
+;;   [documentation-view header])
 
 ;;;
 ;;;
@@ -242,16 +232,17 @@
                      [schedule-view header]
 
                      ;;
-                     ;; documentation
-                     ;;
-                     :documentation
-                     [documentation-view header]
-
-                     ;;
                      ;; session one
                      ;;
                      :session-one
-                     [session-one-view header]
+                     [documentation-view header]
+
+                     ;;
+                     ;; session two
+                     ;;
+                     :session-two
+                     [documentation-view header]
+
 
                      ;;
                      ;; description

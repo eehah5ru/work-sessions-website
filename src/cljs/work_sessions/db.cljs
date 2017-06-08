@@ -16,7 +16,11 @@
    {:type :schedule
     :route-key :schedule}
    {:type :session-one
-    :route-key :session-one}])
+    :route-key :session-one
+    :youtube-id "zYTfUtroTJI"}
+   {:type :session-two
+    :route-key :session-two
+    :youtube-id "wd49EhHutPk"}])
 
 
 ;;;
@@ -96,10 +100,10 @@
                         (filter (fn [x] (= (:route-key details-d) (:key x))))
                         (first)
                         %)]
-    {:type details-type
-     :route (page-data :key)
-     :link (page-data :route)
-     :link-text (page-data :human-readable)}))
+    (merge details-d
+           {:route (page-data :key)
+            :link (page-data :route)
+            :link-text (page-data :human-readable)})))
 ;;;
 ;;;
 ;;;
