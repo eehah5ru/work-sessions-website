@@ -14,4 +14,4 @@
     [:a {:href "http://sws.eeefff.org/session-three-room"
          :target "_blank"}
      "link"]
-    " on 2 June 13:30 Helsinki time"]])
+    " on 9 June 13:30 Helsinki time"]])
