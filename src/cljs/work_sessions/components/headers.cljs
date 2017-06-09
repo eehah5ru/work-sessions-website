@@ -23,8 +23,11 @@
     "This is a digital union of non-material workers, the virtual space of multi-user processing, so try not to distract each other, you can watch someone doing her cognitive work."]
    [:p
     "You can be present with an image of you, you can also share your screen with your current work (On the left side of the screen, click Share screen – a button with a green computer). The sound stays on."]
+   ;;
+   ;; session description
+   ;;
    [:p
-    "In this very session we are focusing on improving the infrastructure for work: clean the desktop, install a photoshop that has not been installed for a long time, add a plug-in that has always been lacking, clean e-mail to avoid paying for it, unsubscribe from mailouts that are so many that nothing can be found in the Inbox."]
+    "In the third session we are concentrating on back-ups, or rather on what is lost irrevocably, if a computer or a tablet suddenly breaks or a phone is stolen. To get an idea of what exactly you should do, spend a few minutes remembering the data that you have irretrievably lost. These can be texts that once disappeared from the desktop, and their copies were not found. The editing of the video that you have been doing for the whole day was lost when the editing program collapsed one evening, and the file hasn’t been saved. Formatted flash drive with photos from the shooting that you haven’t copied anywhere. Or a broken site due to lost data during a hosting crash."]
    [:p
     (unescapeEntities "The session length is 1 hour, 13.30&nbsp;&mdash;&nbsp;14.30 Helsinki and Moscow time.")]
    [:p
@@ -73,12 +76,15 @@
    [:p
     "Можешь присутствовать на сессии своим изображением, можешь расшаривать экран со своей работой (кнопка «Показать экран» в меню слева, там изображен зеленый компьютер). Звук оставляешь включенным.
 "]
+   ;;
+   ;; session description
+   ;;
    [:p
-    (unescapeEntities "Во второй серии мы фокусируемся на улучшении инфраструктуры для работы: почистить десктоп, установить фотошоп, который давно не получалось установить, добавить плагин, которого всегда не хватало, почистить почту, чтобы не платить за нее, отписаться от навязчивых рассылок, из-за которых ничего не возможно найти в папке &quot;входящие&quot; в почте.")]
+    (unescapeEntities "В третьей сессии мы концентрируемся на бэкапах, точнее на том, что потеряется безвозвратно, если вдруг сломается компьютер или планшет или украдут телефон. Чтобы понять, чем именно вам заняться, проведите несколько минут, вспоминая те данные, которые вы безвозвратно потеряли. Это могут быть тексты, которые однажды пропали с рабочего стола,  а их копий не было. Монтаж видео, который вы делали целый день и который потерялся, когда монтажная программа рухнула под вечер, а файл вы не сохраняли. Отформатированная флешка с фотографиями со съемки, которые вы никуда не скопировали. Или неработающий сайт из-за потерявшихся данных во время сбоя на хостинге.")]
    [:p
-    "Продолжительность сессии – 1 час, с 13.30 до 14.30 по Хельсинки и Москве."]
+    (unescapeEntities "Продолжительность сессии &mdash; 1 час, с 13.30 до 14.30 по Хельсинки и Москве.")]
    [:p
-    "Следующая сессия будет через неделю – 9 июня в это же время."]
+    (unescapeEntities "Следующая сессия будет через неделю &mdash; 9 июня в это же время.")]
    [:p
     "Если ты присоединяешься к сессии при помощи компьютера. Открываешь в "
     [:a {:href "https://www.google.com/chrome/"
