@@ -27,7 +27,7 @@
    ;; session description
    ;;
    [:p
-    "In the third session we are concentrating on back-ups, or rather on what is lost irrevocably, if a computer or a tablet suddenly breaks or a phone is stolen. To get an idea of what exactly you should do, spend a few minutes remembering the data that you have irretrievably lost. These can be texts that once disappeared from the desktop, and their copies were not found. The editing of the video that you have been doing for the whole day was lost when the editing program collapsed one evening, and the file hasn’t been saved. Formatted flash drive with photos from the shooting that you haven’t copied anywhere. Or a broken site due to lost data during a hosting crash."]
+    "This is a session-observation, meditation on the process of work of the other. This hour is your opportunity to understand why your partner in this session works after all?"]
    [:p
     (unescapeEntities "The session length is 1 hour, 13.30&nbsp;&mdash;&nbsp;14.30 Helsinki and Moscow time.")]
    [:p
@@ -80,7 +80,7 @@
    ;; session description
    ;;
    [:p
-    (unescapeEntities "В третьей сессии мы концентрируемся на бэкапах, точнее на том, что потеряется безвозвратно, если вдруг сломается компьютер или планшет или украдут телефон. Чтобы понять, чем именно вам заняться, проведите несколько минут, вспоминая те данные, которые вы безвозвратно потеряли. Это могут быть тексты, которые однажды пропали с рабочего стола,  а их копий не было. Монтаж видео, который вы делали целый день и который потерялся, когда монтажная программа рухнула под вечер, а файл вы не сохраняли. Отформатированная флешка с фотографиями со съемки, которые вы никуда не скопировали. Или неработающий сайт из-за потерявшихся данных во время сбоя на хостинге.")]
+    (unescapeEntities "Это &mdash; сессия-наблюдение, медитация над процессом работы другого. Этот час &mdash; ваша возможность понять, зачем ваш партнер по этой сессии вообще работает? ")]
    [:p
     (unescapeEntities "Продолжительность сессии &mdash; 1 час, с 13.30 до 14.30 по Хельсинки и Москве.")]
    [:p
