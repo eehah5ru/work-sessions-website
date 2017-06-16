@@ -123,7 +123,7 @@
    [:h4.time-and-place
     [:a {:href "http://sws.eeefff.org/session-four-room"
          :target "_blank"}
-     (unescapeEntities "Session&nbsp;#3")]
+     (unescapeEntities "Session&nbsp;#4")]
     (gstring/unescapeEntities ": 16&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;and&nbsp;Moscow&nbsp;time")]
    #_[:hr]
    #_[:h4
