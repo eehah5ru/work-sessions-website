@@ -31,7 +31,7 @@
    [:p
     (unescapeEntities "The session length is 1 hour, 13.30&nbsp;&mdash;&nbsp;14.30 Helsinki and Moscow time.")]
    [:p
-    (unescapeEntities "The next session will be in a week&nbsp;&mdash;&nbsp;on 16 June, time stays the same.")]
+    (unescapeEntities "The next session will be in a week&nbsp;&mdash;&nbsp;on 23 June, time stays the same.")]
    [:p
     "Join a simultaneous work session from your computer by opening "
     [:a {:href (str "http://sws.eeefff.org" session-room-url)
