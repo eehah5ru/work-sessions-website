@@ -121,15 +121,15 @@
   [:div.details.schedule
    #_[:hr]
    [:h4.time-and-place
-    [:a {:href "http://sws.eeefff.org/session-three-room"
+    [:a {:href "http://sws.eeefff.org/session-four-room"
          :target "_blank"}
      (unescapeEntities "Session&nbsp;#3")]
-    (gstring/unescapeEntities ": 9&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;and&nbsp;Moscow&nbsp;time")]
+    (gstring/unescapeEntities ": 16&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;and&nbsp;Moscow&nbsp;time")]
    #_[:hr]
    #_[:h4
       (gstring/unescapeEntities "Session&nbsp;#2: 2&nbsp;June, 13:30&nbsp;&mdash;&nbsp;14:30&nbsp;Helsinki&nbsp;time")]
    #_[:hr]
-   [instructions "/session-three-room"]
+   [instructions "/session-four-room"]
    #_[:hr]])
 
 ;;;
