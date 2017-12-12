@@ -14,3 +14,4 @@ log
 /resources/public/index.html
 /resources/public/js/compiled
 resources/public/css/*
+.DS_Store
