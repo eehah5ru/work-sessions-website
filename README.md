@@ -13,3 +13,9 @@ This is repo with source of [simultaneous work sessions](http://sws.eeefff.org/)
 
 - see `./deploy_to_sws_eeefff_org.sh` for deployment details
 - run `./deploy_to_sws_eeefff_org.sh && lein with-profile dev filegen-ng` if you don't want to stop figwheel
+
+## Development
+
+To start Figwheel in Emacs:
+- run cider: `M-x cider-jack-in`
+- go to `./snippets.clj` and run piece of code commented as _start server_.
