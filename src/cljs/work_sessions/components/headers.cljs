@@ -170,10 +170,10 @@
 ;;;
 (defn description-view [header]
   [:h4.details.description
-   [:p "In a series of simultaneous work sessions, we invite you to
-                                            join a work activity for
-                                            an hour space of time."]
-
+   [:p
+    "In a series of simultaneous work sessions, we invite you to join a work activity for an hour space of time."]
+   [:p
+    "This is a digital union of non-material workers, the virtual space of multi-user processing, so try not to distract each other, you can watch someone doing her cognitive work."]
    [:p "The synchronized sessions are designed to
                       embody participants into one working mode. Being
                       united by one of online-communication tools, we
@@ -249,6 +249,18 @@
                      :session-two
                      [documentation-view header]
 
+                     ;;
+                     ;; session three
+                     ;;
+                     :session-three
+                     [documentation-view header]
+
+                     ;;
+                     ;; session four
+                     ;;
+                     :session-four
+                     [documentation-view header]
+
 
                      ;;
                      ;; description
@@ -259,7 +271,7 @@
                      ;;
                      ;; missing
                      ;;
-                     [schedule-view header]))]
+                     [description-view header]))]
                 {:key h-id}))
             @headers
             (range (count @headers)))])))

@@ -13,14 +13,25 @@
 (def details-data
   [{:type :description
     :route-key :about}
-   {:type :schedule
-    :route-key :schedule}
+   ;;
+   ;; sessions
+   ;;
    {:type :session-one
     :route-key :session-one
     :youtube-id "zYTfUtroTJI"}
+
    {:type :session-two
     :route-key :session-two
-    :youtube-id "wd49EhHutPk"}])
+    :youtube-id "wd49EhHutPk"}
+
+   {:type :session-three
+    :route-key :session-three
+    :youtube-id "-DcI9vNPMJA"}
+
+   {:type :session-four
+    :route-key :session-four
+    :youtube-id "pr5WhEkJsIQ"}
+   ])
 
 
 ;;;
@@ -92,10 +103,11 @@
 ;;; default db attrs
 ;;;
 ;;;
-
-(defn random-details []
-  (let [details-d (rand-nth details-data)
-        details-type (:type details-d)
+;;;
+;;; make db-headers-details item from generic details-data item
+;;;
+(defn mk-details [details-d]
+  (let [details-type (:type details-d)
         page-data #(->> pages/page-defs
                         (filter (fn [x] (= (:route-key details-d) (:key x))))
                         (first)
@@ -104,10 +116,17 @@
            {:route (page-data :key)
             :link (page-data :route)
             :link-text (page-data :human-readable)})))
+
+;;;
+;;; make random details
+;;;
+(defn random-details []
+  (mk-details (rand-nth details-data)))
+
 ;;;
 ;;;
 ;;;
-(defn default-header []
+(defn default-header [details]
   {:text ""
    :details-visible? false
    :speed (Math/ceil (+ 30 (* 70 (rand))))
@@ -115,7 +134,7 @@
    :angle (Math/ceil (+ -10 (* 40 (rand))))
    :angled? false
    :hovered? false
-   :details (random-details)})
+   :details details})
 
 ;;;
 ;;; default db
@@ -124,7 +143,10 @@
   {:site-name "Simultaneous Work Sessions"
    :is-proxy-viewer-docs-visible? false
    :splash-screen-state :enabled
-   :headers (repeatedly 10 default-header)})
+   :headers (map #(-> %
+                      mk-details
+                      default-header)
+                 details-data)})
 
 
 ;;;

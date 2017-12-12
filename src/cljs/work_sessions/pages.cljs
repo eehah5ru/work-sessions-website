@@ -11,19 +11,15 @@
    ;;
    [work-sessions.components.home-page :refer [home-page]]
    [work-sessions.components.about-page :refer [about-page]]
-   [work-sessions.components.schedule-page :refer [schedule-page]]
-   [work-sessions.components.proxy-viewer-page :refer [proxy-viewer-page]]
+   ;; [work-sessions.components.schedule-page :refer [schedule-page]]
+   ;; [work-sessions.components.proxy-viewer-page :refer [proxy-viewer-page]]
    [work-sessions.components.session-one-page :refer [session-one-page]]
    [work-sessions.components.session-two-page :refer [session-two-page]]
+   [work-sessions.components.session-three-page :refer [session-three-page]]
+   [work-sessions.components.session-four-page :refer [session-four-page]]
+
 
    [work-sessions.components.session-not-found-page :refer [session-not-found-page]]
-   ;; [childrensfutures-trade.components.my-goals-page :refer [my-goals-page]]
-   ;; [childrensfutures-trade.components.pulse-page :refer [pulse-page]]
-   ;; [childrensfutures-trade.components.how-to-play-page :refer [how-to-play-page]]
-   ;; [childrensfutures-trade.components.about-page :refer [about-page]]
-   ;; [childrensfutures-trade.components.view-goal-page :refer [view-goal-page]]
-   ;; [childrensfutures-trade.components.my-events-page :refer [my-events-page]]
-   ;; [childrensfutures-trade.components.latest-events-page :refer [latest-events-page]]
 
    ))
 
@@ -37,26 +33,36 @@
     :human-readable "Home"
     :page-view home-page
     }
-   {:key :proxy-viewer
-    :route "proxy-viewer"
-    :human-readable "Proxy Viewer"
-    :page-view proxy-viewer-page}
    {:key :about
     :route "about"
     :human-readable "About"
     :page-view about-page}
-   {:key :schedule
-    :route "schedule"
-    :human-readable "Schedule"
-    :page-view schedule-page}
+   ;;
+   ;; sessions
+   ;;
    {:key :session-one
     :route "session-one"
     :human-readable "Session #1"
     :page-view session-one-page}
+
    {:key :session-two
     :route "session-two"
     :human-readable "Session #2"
     :page-view session-two-page}
+
+   {:key :session-three
+    :route "session-three"
+    :human-readable "Session #3"
+    :page-view session-three-page}
+
+   {:key :session-four
+    :route "session-four"
+    :human-readable "Session #4"
+    :page-view session-four-page}
+
+   ;;
+   ;; not found
+   ;;
    {:key :session-not-found
     :route "session-not-found"
     :human-readable "Session not found"

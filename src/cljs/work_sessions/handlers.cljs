@@ -239,6 +239,21 @@
    {}
    ))
 
+;; ;;;
+;; ;;; change page title
+;; ;;;
+;; (reg-event-fx
+;;  :ui.page.title/update
+;;  (interceptors-fx :spec false)
+;;  (fn [{:keys [db]}]
+;;    (let [cur-page-name (-> db
+;;                       :current-page
+;;                       :handler
+;;                       pages/human-readable)
+;;          page-title (str "myfutures.trade / " cur-page-name)]
+;;      (aset js/document "title" page-title)
+;;      {})))
+
 
 ;; (reg-event-db
 ;;  :ui.header/hover
