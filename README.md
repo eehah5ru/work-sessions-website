@@ -1,36 +1,15 @@
 # work-sessions-website
 
-FIXME: description
+This is repo with source of [simultaneous work sessions](http://sws.eeefff.org/).
 
-## Installation
+## lein targets
 
-Download from http://example.com/FIXME.
+- ` lein figwheel` to start local server
+- `lein release patch` to make new release before deployment
+- `lein with-profile dev filegen-ng` to regenerate static files
+- `lein scss :dev auto` to start SCSS autobuild
 
-## Usage
+## Deployment
 
-FIXME: explanation
-
-    $ java -jar work-sessions-website-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2017 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+- see `./deploy_to_sws_eeefff_org.sh` for deployment details
+- run `./deploy_to_sws_eeefff_org.sh && lein with-profile dev filegen-ng` if you don't want to stop figwheel
